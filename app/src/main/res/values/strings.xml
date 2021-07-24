@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Damda</string>
+    <string name="division">코스피</string>
+    <string name="stock_code">12345</string>
+    <string name="stock_name">카카오</string>
+    <string name="stock_money">12,345</string>
+    <string name="increase_money">▲ 1,000</string>
+    <string name="increase_rate">+3.3</string>
+    <string name="money_unit">원</string>
 </resources>
