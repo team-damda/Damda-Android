@@ -16,7 +16,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/button3"
+        android:id="@+id/button_check"
         style="@style/Medium"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -41,9 +41,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:text="@string/sign_check_message_1"
-        app:layout_constraintBottom_toBottomOf="@+id/button3"
-        app:layout_constraintStart_toEndOf="@+id/button3"
-        app:layout_constraintTop_toTopOf="@+id/button3" />
+        app:layout_constraintBottom_toBottomOf="@+id/button_check"
+        app:layout_constraintStart_toEndOf="@+id/button_check"
+        app:layout_constraintTop_toTopOf="@+id/button_check" />
 
     <TextView
         android:id="@+id/textView5"
@@ -57,7 +57,7 @@
         app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
     <EditText
-        android:id="@+id/editTextTextEmailAddress2"
+        android:id="@+id/edit_text_email"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -79,10 +79,10 @@
         android:text="@string/sign_password"
         style="@style/Bold.EditTextTitleStyle"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextEmailAddress2" />
+        app:layout_constraintTop_toBottomOf="@+id/edit_text_email" />
 
     <EditText
-        android:id="@+id/editTextTextPassword2"
+        android:id="@+id/edit_text_pwd"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -104,10 +104,10 @@
         android:text="@string/sign_password_check"
         style="@style/Bold.EditTextTitleStyle"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword2" />
+        app:layout_constraintTop_toBottomOf="@+id/edit_text_pwd" />
 
     <EditText
-        android:id="@+id/editTextTextPassword3"
+        android:id="@+id/edit_text_check_pwd"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -129,10 +129,10 @@
         android:text="@string/sign_nickname"
         style="@style/Bold.EditTextTitleStyle"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword3" />
+        app:layout_constraintTop_toBottomOf="@+id/edit_text_check_pwd" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName2"
+        android:id="@+id/edit_text_nickname"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -146,7 +146,7 @@
         android:autofillHints="nickname" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/button_sign_up"
         style="@style/Bold.ButtonTextStyle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
