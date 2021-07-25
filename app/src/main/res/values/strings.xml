@@ -7,4 +7,13 @@
     <string name="increase_money">▲ 1,000</string>
     <string name="increase_rate">+3.3</string>
     <string name="money_unit">원</string>
+    <string name="left_parentheses">(</string>
+    <string name="right_parentheses">)</string>
+    <string name="day">1일</string>
+    <string name="one_week">1주일</string>
+    <string name="one_month">1개월</string>
+    <string name="three_month">3개월</string>
+    <string name="one_year">1년</string>
+    <string name="buying">매수</string>
+    <string name="selling">매도</string>
 </resources>
