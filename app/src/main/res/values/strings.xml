@@ -8,4 +8,12 @@
     <string name="main_mystatus">주식초보 53일차</string>
     <string name="main_nickname">닉네임6글자</string>
     <string name="main_plusbutton">+</string>
+    <string name="main_stockname">종목명최대10자</string>
+    <string name="main_markettype">코스피</string>
+    <string name="main_stockcode">00000</string>
+    <string name="main_stockprice">5000원</string>
+    <string name="main_stocktotprice">10,000원(2주)</string>
+    <string name="main_stockpercent">+50.00%</string>
+    <string name="wallet_transcontent">체결가 30,000원(1950주)</string>
+    <string name="wallet_transtime">12:31</string>
 </resources>

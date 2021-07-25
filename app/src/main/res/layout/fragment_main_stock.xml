@@ -57,7 +57,8 @@
                 app:layout_constraintStart_toStartOf="parent"
                 android:text="@string/main_totasset"
                 android:textColor="@color/white"
-                android:textStyle="bold"
+                android:fontFamily="@font/noto_sans_kr_bold"
+                android:includeFontPadding="false"
                 android:textSize="18sp"
                 />
 
@@ -69,7 +70,8 @@
                 android:text="@string/main_totassetmoney"
                 android:textColor="@color/white"
                 android:textSize="18sp"
-                android:textStyle="bold"
+                android:fontFamily="@font/noto_sans_kr_bold"
+                android:includeFontPadding="false"
                 app:layout_constraintStart_toStartOf="@+id/txtview_main_totasset"
                 app:layout_constraintTop_toBottomOf="@+id/txtview_main_totasset" />
 
@@ -102,7 +104,8 @@
                 android:layout_marginEnd="8dp"
                 android:layout_marginRight="8dp"
                 android:textColor="@color/black"
-                android:textStyle="bold"
+                android:fontFamily="@font/noto_sans_kr_bold"
+                android:includeFontPadding="false"
                 android:textSize="12sp"
                 app:layout_constraintBottom_toBottomOf="@+id/txtview_main_nickname"
                 app:layout_constraintEnd_toStartOf="@+id/txtview_main_nickname"
@@ -115,7 +118,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
                 android:textColor="@color/white"
-                android:textStyle="bold"
+                android:fontFamily="@font/noto_sans_kr_bold"
+                android:includeFontPadding="false"
                 android:textSize="12sp"
                 app:layout_constraintTop_toBottomOf="@+id/view_main_characterwrapper"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -126,6 +130,29 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tab_main_mystock"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="42dp"
+            android:background="@drawable/app_listitem_border"
+            app:layout_constraintTop_toBottomOf="@+id/layout_main_mycomp"
+            app:layout_constraintStart_toEndOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            />
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/pager_main_stocklist"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layoutDirection="ltr"
+            android:background="@color/white"
+            app:layout_constraintTop_toBottomOf="@id/tab_main_mystock"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:paddingTop="8dp"
+            />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>
