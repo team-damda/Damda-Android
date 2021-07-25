@@ -19,4 +19,9 @@
     <string name="wallet_transday">21/5/6(수)</string>
     <string name="wallet_vallos">평가손익</string>
     <string name="wallet_vallossmoney">+5,000원</string>
+    <string name="wallet_mystockasset">주식</string>
+    <string name="wallet_mystockassetmoney">10,000,000원</string>
+    <string name="wallet_mydepositasset">예수금</string>
+    <string name="wallet_totasset">총 자산</string>
+    <string name="wallet_totassetmoney">12,000,000원</string>
 </resources>
