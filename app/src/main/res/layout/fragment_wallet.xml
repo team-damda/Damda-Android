@@ -21,9 +21,9 @@
             android:layout_marginTop="20dp"
             android:layout_marginHorizontal="16dp"
             android:paddingTop="20dp"
-            android:paddingLeft="24dp"
+            android:paddingStart="24dp"
             android:paddingBottom="12dp"
-            android:paddingRight="20dp"
+            android:paddingEnd="20dp"
             >
             <View
                 android:id="@+id/view_wallet_mystatus_orangecircle"
@@ -45,7 +45,8 @@
                 app:layout_constraintTop_toTopOf="@id/view_wallet_mystatus_orangecircle"
                 app:layout_constraintStart_toEndOf="@+id/view_wallet_mystatus_orangecircle"
                 app:layout_constraintBottom_toBottomOf="@id/view_wallet_mystatus_orangecircle"
-                android:layout_marginLeft="8dp"
+
+                android:layout_marginStart="8dp"
                 />
             <TextView
                 android:id="@+id/txtview_wallet_mystockassetmoney"
@@ -59,6 +60,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/view_wallet_mystatus_orangecircle"
                 app:layout_constraintStart_toStartOf="parent"
                 android:layout_marginTop="4dp"
+
                 />
             <View
                 android:id="@+id/view_wallet_mystatus_greycircle"
@@ -81,7 +83,8 @@
                 app:layout_constraintStart_toEndOf="@+id/view_wallet_mystatus_greycircle"
                 app:layout_constraintTop_toTopOf="@id/view_wallet_mystatus_greycircle"
                 app:layout_constraintBottom_toBottomOf="@+id/view_wallet_mystatus_greycircle"
-                android:layout_marginLeft="8dp"
+
+                android:layout_marginStart="8dp"
                 />
             <TextView
                 android:id="@+id/txtview_wallet_mydepositassetmoney"
@@ -115,7 +118,8 @@
                 android:textSize="18sp"
                 app:layout_constraintTop_toBottomOf="@id/view_wallet_piechart"
                 app:layout_constraintEnd_toStartOf="@+id/txtview_wallet_totassetmoney"
-                android:layout_marginRight="8dp"
+
+                android:layout_marginEnd="8dp"
             />
             <TextView
                 android:id="@+id/txtview_wallet_totassetmoney"
