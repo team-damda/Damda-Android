@@ -137,7 +137,7 @@
             android:layout_marginTop="42dp"
             android:background="@drawable/app_listitem_border"
             app:layout_constraintTop_toBottomOf="@+id/layout_main_mycomp"
-            app:layout_constraintStart_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             />
 
@@ -149,7 +149,7 @@
             android:background="@color/white"
             app:layout_constraintTop_toBottomOf="@id/tab_main_mystock"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:paddingTop="8dp"
             />
