@@ -12,7 +12,7 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimary</item>
         <!-- Customize your theme here. -->
-
+        <item name="android:windowBackground">@color/warm_white</item>
         <!-- EditText theme. -->
         <item name="android:textColorHint">@color/brownish_grey_50</item>
         <item name="android:editTextBackground">@drawable/bg_edit_text</item>
