@@ -4,10 +4,6 @@
         android:radius="8dp"
         />
     <solid
-        android:color="@color/sellingColor"
-        />
-    <size
-        android:width="160dp"
-        android:height="48dp"
+        android:color="@color/buyingColor"
         />
 </shape>
