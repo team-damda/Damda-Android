@@ -7,4 +7,11 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <!--  Damda color.  -->
+    <color name="dusty_orange">#e67c49</color>
+    <color name="brownish_grey">#636363</color>
+    <color name="brownish_grey_50">#80636363</color>
+    <color name="warm_grey">#959595</color>
+    <color name="warm_white">#f8f8f8</color>
 </resources>
