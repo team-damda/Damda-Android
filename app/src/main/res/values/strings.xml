@@ -27,6 +27,11 @@
     <string name="wallet_mydepositasset">예수금</string>
     <string name="wallet_totasset">총 자산</string>
     <string name="wallet_totassetmoney">12,000,000원</string>
+    <string name="wallet_nonetransaction">거래내역이 없어요</string>
+    <string name="wallet_nonetransactionadvice">이번 달의 거래를 시작해보세요</string>
+    <string name="wallet_filterall">전체</string>
+    <string name="wallet_filterbuy">매수</string>
+    <string name="wallet_filtersell">매도</string>
 
 
     <!--  Sign string.  -->
