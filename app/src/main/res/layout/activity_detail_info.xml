@@ -14,7 +14,7 @@
         android:layout_marginLeft="24dp"
         android:layout_marginTop="48dp"
         android:text="@string/division"
-        android:textColor="@color/darkgray"
+        android:textColor="@color/warm_grey"
         android:textSize="12sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -27,7 +27,7 @@
         android:layout_marginLeft="8dp"
         android:layout_marginTop="48dp"
         android:text="@string/stock_code"
-        android:textColor="@color/darkgray"
+        android:textColor="@color/warm_grey"
         android:textSize="12sp"
         app:layout_constraintStart_toEndOf="@+id/tv_division"
         app:layout_constraintTop_toTopOf="parent" />
