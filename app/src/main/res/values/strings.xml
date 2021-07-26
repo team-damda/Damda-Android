@@ -16,6 +16,16 @@
     <string name="main_stockprice">5000원</string>
     <string name="main_stocktotprice">10,000원(2주)</string>
     <string name="main_stockpercent">+50.00%</string>
+    <string name="app_noneinterest">관심종목이 없어요</string>
+    <string name="app_noneinterestadvice">검색탭을 통해 관심있는 주식을 담아봐요</string>
+
+
+    <!-- Calendar string -->
+    <string name="calendar_plus">전일 대비 수익률 +5% 이상</string>
+    <string name="calendar_zero">전일 대비 수익률 -5% ~ +5%</string>
+    <string name="calendar_minus">전일 대비 수익률 -5% 이하</string>
+    <string name="calendar_exp">하루마다 수익을 나타내는 캘린더입니다</string>
+
     <!-- Wallet string -->
     <string name="wallet_transcontent">체결가 30,000원(1950주)</string>
     <string name="wallet_transtime">12:31</string>
