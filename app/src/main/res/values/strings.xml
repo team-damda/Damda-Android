@@ -1,7 +1,8 @@
 <resources>
     <string name="app_name">Damda</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!-- Main String -->
     <string name="app_hint">hint</string>
     <string name="main_totasset">총 자산</string>
     <string name="main_totassetmoney">12,000,000원</string>
@@ -14,6 +15,7 @@
     <string name="main_stockprice">5000원</string>
     <string name="main_stocktotprice">10,000원(2주)</string>
     <string name="main_stockpercent">+50.00%</string>
+    <!-- Wallet string -->
     <string name="wallet_transcontent">체결가 30,000원(1950주)</string>
     <string name="wallet_transtime">12:31</string>
     <string name="wallet_transday">21/5/6(수)</string>
@@ -24,4 +26,22 @@
     <string name="wallet_mydepositasset">예수금</string>
     <string name="wallet_totasset">총 자산</string>
     <string name="wallet_totassetmoney">12,000,000원</string>
+
+    <!--  Sign string.  -->
+    <string name="sign_email">이메일</string>
+    <string name="sign_password">비밀번호</string>
+    <string name="sign_sign_in">로그인</string>
+    <string name="sign_sign_up">회원가입하기</string>
+    <string name="sign_comment">담다가 처음이신가요?</string>
+    <string name="sign_email_hint">이메일을 입력해주세요</string>
+    <string name="sign_password_hint">비밀번호를 입력해주세요</string>
+    <string name="sign_logo">로고</string>
+    <string name="sign_check">중복확인</string>
+    <string name="sign_check_message_1">중복확인을 해주세요</string>
+    <string name="sign_check_message_2">사용가능한 이메일입니다</string>
+    <string name="sign_password_check">비밀번호 확인</string>
+    <string name="sign_nickname">닉네임 (6자 이내)</string>
+    <string name="sign_password_check_hint">비밀번호 확인을 해주세요</string>
+    <string name="sign_nickname_hint">닉네임을 입력해주세요</string>
+
 </resources>
