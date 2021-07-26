@@ -1,7 +1,8 @@
 <resources>
     <string name="app_name">Damda</string>
     <!-- TODO: Remove or change this placeholder text -->
-
+    <string name="app_nonestock">보유종목이 없어요</string>
+    <string name="app_nonestockadvice">검색탭으로 주식을 찾아봐요</string>
     <!-- Main String -->
     <string name="app_hint">hint</string>
     <string name="main_totasset">총 자산</string>
@@ -27,6 +28,7 @@
     <string name="wallet_totasset">총 자산</string>
     <string name="wallet_totassetmoney">12,000,000원</string>
 
+
     <!--  Sign string.  -->
     <string name="sign_email">이메일</string>
     <string name="sign_password">비밀번호</string>
@@ -43,5 +45,7 @@
     <string name="sign_nickname">닉네임 (6자 이내)</string>
     <string name="sign_password_check_hint">비밀번호 확인을 해주세요</string>
     <string name="sign_nickname_hint">닉네임을 입력해주세요</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

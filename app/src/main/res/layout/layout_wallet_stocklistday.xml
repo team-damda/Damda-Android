@@ -9,14 +9,14 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="@drawable/app_listitem_border"
+        android:background="@drawable/bg_listitem_border"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
 
-        android:paddingRight="20dp"
-        android:paddingLeft="28dp"
+        android:paddingEnd="20dp"
+        android:paddingStart="28dp"
         android:paddingTop="20dp"
         android:paddingBottom="16dp"
         >
@@ -24,7 +24,7 @@
             android:id="@+id/view_wallet_orangecircle"
             android:layout_width="12dp"
             android:layout_height="12dp"
-            android:background="@drawable/wallet_stocklistday_oval"
+            android:background="@drawable/bg_oval_orange"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -41,7 +41,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/view_wallet_orangecircle"
-            android:layout_marginLeft="8dp"
+            android:layout_marginStart="8dp"
             />
         <TextView
             android:id="@+id/txtview_wallet_valloss"
