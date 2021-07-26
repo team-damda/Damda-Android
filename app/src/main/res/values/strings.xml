@@ -21,8 +21,8 @@
     <string name="two_stock">2</string>
     <string name="stock_unit">주</string>
     <string name="total">총</string>
-    <string name="total_money">11,0000</string>
-    <string name="buying_money">6,000</string>
+    <string name="total_money">1110,000</string>
+    <string name="buying_money">60,000</string>
     <string name="lack">부족</string>
     <string name="max_buying">최대로 매수</string>
     <string name="all_delete">전체삭제</string>
@@ -37,7 +37,7 @@
     <string name="eight">8</string>
     <string name="nine">9</string>
     <string name="zero">0</string>
-    <string name="result_money">+60,000</string>
+    <string name="result_money">+600,000</string>
     <string name="max_selling">최대로 매도</string>
     <string name="do_selling">매도하기</string>
 </resources>
