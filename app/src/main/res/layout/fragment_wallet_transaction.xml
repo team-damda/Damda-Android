@@ -76,7 +76,7 @@
                 android:id="@+id/spinner_wallet_filter"
                 android:layout_width="88dp"
                 android:layout_height="wrap_content"
-                android:background="@drawable/bg_round_4dp"
+                android:background="@drawable/bg_round_border_4dp"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
