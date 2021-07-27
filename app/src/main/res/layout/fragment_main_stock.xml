@@ -16,9 +16,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
-
             android:layout_marginTop="34dp"
-            android:background="@drawable/ic_logo_88x36dp"
+            android:background="@drawable/ic_logo_main"
             android:contentDescription="@string/app_name"
             app:layout_constraintBottom_toBottomOf="@+id/imgview_main_hint"
             app:layout_constraintStart_toStartOf="parent"
@@ -32,7 +31,6 @@
             android:contentDescription="@string/app_hint"
             android:layout_marginTop="40dp"
             android:layout_marginEnd="16dp"
-
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
 
@@ -102,7 +100,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
-
                 android:textColor="@color/black"
                 android:fontFamily="@font/noto_sans_kr_bold"
                 android:includeFontPadding="false"
@@ -125,7 +122,6 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 android:text="@string/main_nickname"
                 />
-
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
