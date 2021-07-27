@@ -6,11 +6,11 @@
     <!-- Main String -->
     <string name="app_hint">hint</string>
     <string name="main_totasset">총 자산</string>
-    <string name="main_totassetmoney">12,000,000원</string>
+    <string name="main_totassetmoney">12,000,000,000,000원</string>
     <string name="main_mystatus">주식초보 53일차</string>
     <string name="main_nickname">닉네임6글자</string>
     <string name="main_plusbutton">+</string>
-    <string name="main_stockname">종목명최대10자</string>
+    <string name="main_stockname">안녕안녕나는바보야하하하하하하하하</string>
     <string name="main_markettype">코스피</string>
     <string name="main_stockcode">00000</string>
     <string name="main_stockprice">5000원</string>

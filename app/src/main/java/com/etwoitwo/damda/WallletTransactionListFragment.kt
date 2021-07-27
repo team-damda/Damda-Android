@@ -34,7 +34,7 @@ class WallletTransactionFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_walllet_transaction, container, false)
+        return inflater.inflate(R.layout.fragment_walllet_transaction_list, container, false)
     }
 
     companion object {
