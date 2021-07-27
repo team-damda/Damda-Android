@@ -1,48 +1,7 @@
 <resources>
     <string name="app_name">Damda</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="app_nonestock">보유종목이 없어요</string>
-    <string name="app_nonestockadvice">검색탭으로 주식을 찾아봐요</string>
-    <!-- Main String -->
-    <string name="app_hint">hint</string>
-    <string name="main_totasset">총 자산</string>
-    <string name="main_totassetmoney">12,000,000,000,000원</string>
-    <string name="main_mystatus">주식초보 53일차</string>
-    <string name="main_nickname">닉네임6글자</string>
-    <string name="main_plusbutton">+</string>
-    <string name="main_stockname">안녕안녕나는바보야하하하하하하하하</string>
-    <string name="main_markettype">코스피</string>
-    <string name="main_stockcode">00000</string>
-    <string name="main_stockprice">5000원</string>
-    <string name="main_stocktotprice">10,000원(2주)</string>
-    <string name="main_stockpercent">+50.00%</string>
-    <string name="app_noneinterest">관심종목이 없어요</string>
-    <string name="app_noneinterestadvice">검색탭을 통해 관심있는 주식을 담아봐요</string>
-
-
-    <!-- Calendar string -->
-    <string name="calendar_plus">전일 대비 수익률 +5% 이상</string>
-    <string name="calendar_zero">전일 대비 수익률 -5% ~ +5%</string>
-    <string name="calendar_minus">전일 대비 수익률 -5% 이하</string>
-    <string name="calendar_exp">하루마다 수익을 나타내는 캘린더입니다</string>
-
-    <!-- Wallet string -->
-    <string name="wallet_transcontent">체결가 30,000원(1950주)</string>
-    <string name="wallet_transtime">12:31</string>
-    <string name="wallet_transday">21/5/6(수)</string>
-    <string name="wallet_vallos">평가손익</string>
-    <string name="wallet_vallossmoney">+5,000원</string>
-    <string name="wallet_mystockasset">주식</string>
-    <string name="wallet_mystockassetmoney">10,000,000원</string>
-    <string name="wallet_mydepositasset">예수금</string>
-    <string name="wallet_totasset">총 자산</string>
-    <string name="wallet_totassetmoney">12,000,000원</string>
-    <string name="wallet_nonetransaction">거래내역이 없어요</string>
-    <string name="wallet_nonetransactionadvice">이번 달의 거래를 시작해보세요</string>
-    <string name="wallet_filterall">전체</string>
-    <string name="wallet_filterbuy">매수</string>
-    <string name="wallet_filtersell">매도</string>
-
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <!--  Sign string.  -->
     <string name="sign_email">이메일</string>
