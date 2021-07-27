@@ -24,6 +24,8 @@
             android:paddingStart="24dp"
             android:paddingBottom="12dp"
             android:paddingEnd="20dp"
+            android:elevation="10dp"
+
             >
             <View
                 android:id="@+id/view_wallet_mystatus_orangecircle"
