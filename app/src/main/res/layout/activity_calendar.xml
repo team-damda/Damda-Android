@@ -30,8 +30,10 @@
 
     <ImageView
         android:id="@+id/imgview_calendar_plus"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/ic_calendar_plus_24dp"
+        android:contentDescription="@string/calendar_plus"
         app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/txtview_calendar_plus"
@@ -55,8 +57,10 @@
         />
     <ImageView
         android:id="@+id/imgview_calendar_zero"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/ic_calendar_zero_24dp"
+        android:contentDescription="@string/calendar_zero"
         app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/txtview_calendar_zero"
@@ -82,8 +86,10 @@
 
     <ImageView
         android:id="@+id/imgview_calendar_minus"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/ic_calendar_minus_24dp"
+        android:contentDescription="@string/calendar_minus"
         app:layout_constraintBottom_toBottomOf="@+id/txtview_calendar_minus"
         app:layout_constraintEnd_toStartOf="@+id/txtview_calendar_minus"
         app:layout_constraintHorizontal_chainStyle="packed"
