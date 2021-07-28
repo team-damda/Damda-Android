@@ -4,6 +4,6 @@
         android:radius="8dp"
         />
     <solid
-        android:color="@color/sellingColor"
+        android:color="@color/dark_sky_blue"
         />
 </shape>

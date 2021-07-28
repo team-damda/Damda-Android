@@ -6,7 +6,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/bg_dialog_util_selling"
+        android:background="@drawable/bg_dialog_util_buying"
         tools:context=".util.UtilDialog">
 
 
@@ -18,6 +18,7 @@
             android:layout_marginTop="16dp"
             android:text="@string/recheck"
             android:textSize="14sp"
+            app:layout_constraintBottom_toTopOf="@+id/text_view_stock_name"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -27,11 +28,13 @@
             style="@style/Black_Medium"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="98dp"
-            android:layout_marginLeft="98dp"
             android:layout_marginTop="8dp"
+            android:layout_marginEnd="4dp"
+            android:layout_marginRight="4dp"
             android:text="@string/stock_name"
             android:textSize="18sp"
+            app:layout_constraintEnd_toStartOf="@+id/text_view_two_stock"
+            app:layout_constraintHorizontal_chainStyle="packed"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/text_view_recheck" />
 
@@ -45,6 +48,7 @@
             android:layout_marginTop="8dp"
             android:text="@string/two_stock"
             android:textSize="18sp"
+            app:layout_constraintEnd_toStartOf="@+id/text_view_stock_unit"
             app:layout_constraintStart_toEndOf="@+id/text_view_stock_name"
             app:layout_constraintTop_toBottomOf="@+id/text_view_recheck" />
 
@@ -56,6 +60,7 @@
             android:layout_marginTop="8dp"
             android:text="@string/stock_unit"
             android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/text_view_two_stock"
             app:layout_constraintTop_toBottomOf="@+id/text_view_recheck" />
 
@@ -64,11 +69,13 @@
             style="@style/Black_Medium"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="70dp"
-            android:layout_marginLeft="70dp"
             android:layout_marginTop="8dp"
+            android:layout_marginEnd="4dp"
+            android:layout_marginRight="4dp"
             android:text="@string/total"
             android:textSize="14sp"
+            app:layout_constraintEnd_toStartOf="@+id/text_view_total_money"
+            app:layout_constraintHorizontal_chainStyle="packed"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/text_view_stock_name" />
 
@@ -77,11 +84,10 @@
             style="@style/Black_Medium"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:layout_marginLeft="4dp"
             android:layout_marginTop="8dp"
             android:text="@string/total_money"
             android:textSize="14sp"
+            app:layout_constraintEnd_toStartOf="@+id/text_view_money_unit"
             app:layout_constraintStart_toEndOf="@+id/text_view_total"
             app:layout_constraintTop_toBottomOf="@+id/text_view_stock_name" />
 
@@ -93,6 +99,7 @@
             android:layout_marginTop="8dp"
             android:text="@string/money_unit"
             android:textSize="14sp"
+            app:layout_constraintEnd_toStartOf="@+id/text_view_left_parentheses"
             app:layout_constraintStart_toEndOf="@+id/text_view_total_money"
             app:layout_constraintTop_toBottomOf="@+id/text_view_stock_name" />
 
@@ -103,8 +110,9 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:text="@string/left_parentheses"
-            android:textColor="@color/buyingColor"
+            android:textColor="@color/pastel_red"
             android:textSize="14sp"
+            app:layout_constraintEnd_toStartOf="@+id/text_view_result_money"
             app:layout_constraintStart_toEndOf="@+id/text_view_money_unit"
             app:layout_constraintTop_toBottomOf="@+id/text_view_stock_name" />
 
@@ -115,8 +123,9 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:text="@string/result_money"
-            android:textColor="@color/buyingColor"
+            android:textColor="@color/pastel_red"
             android:textSize="14sp"
+            app:layout_constraintEnd_toStartOf="@+id/text_view_right_parentheses"
             app:layout_constraintStart_toEndOf="@+id/text_view_left_parentheses"
             app:layout_constraintTop_toBottomOf="@+id/text_view_stock_name" />
 
@@ -127,41 +136,42 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:text="@string/right_parentheses"
-            android:textColor="@color/buyingColor"
+            android:textColor="@color/pastel_red"
             android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/text_view_result_money"
             app:layout_constraintTop_toBottomOf="@+id/text_view_stock_name" />
 
         <Button
             android:id="@+id/button_cancel"
-            android:layout_width="84dp"
+            style="@style/White_Bold"
+            android:layout_width="0dp"
             android:layout_height="48dp"
             android:layout_marginStart="16dp"
             android:layout_marginLeft="16dp"
-            android:layout_marginTop="20dp"
-            android:text="@string/cancel"
-            style="@style/White_Bold"
-            android:textSize="20sp"
+            android:layout_marginBottom="16dp"
             android:background="@drawable/bg_cancel_button"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/text_view_total_money" />
+            android:text="@string/cancel"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <Button
-            android:id="@+id/button_selling"
+            android:id="@+id/button_buying"
             style="@style/White_Bold"
-            android:layout_width="172dp"
+            android:layout_width="0dp"
             android:layout_height="48dp"
             android:layout_marginStart="8dp"
             android:layout_marginLeft="8dp"
-            android:layout_marginTop="20dp"
             android:layout_marginEnd="16dp"
             android:layout_marginRight="16dp"
+            android:layout_marginBottom="16dp"
             android:background="@drawable/bg_buying_button"
-            android:text="@string/selling"
+            android:text="@string/buying"
             android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/button_cancel"
-            app:layout_constraintTop_toBottomOf="@+id/text_view_total_money" />
+            app:layout_constraintStart_toEndOf="@+id/button_cancel" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

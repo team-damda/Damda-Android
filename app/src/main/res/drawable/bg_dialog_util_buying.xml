@@ -7,7 +7,7 @@
         android:color="@color/warm_white"
         />
     <stroke
-        android:color="@color/buyingColor"
+        android:color="@color/pastel_red"
         android:width="2dp"
         />
 </shape>

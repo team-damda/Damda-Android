@@ -5,8 +5,8 @@
     <color name="purple_700">#FF3700B3</color>
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
-    <color name="buyingColor">#e6504f</color>
-    <color name="sellingColor">#4f99e6</color>
+    <color name="pastel_red">#e6504f</color>
+    <color name="dark_sky_blue">#4f99e6</color>
     <color name="black">#000000</color>
     <color name="white">#ffffff</color>
     <color name="dusty_orange">#e67c49</color>

@@ -6,6 +6,7 @@
     <string name="stock_money">12,345</string>
     <string name="increase_money">▲ 1,000</string>
     <string name="increase_rate">+3.3</string>
+    <string name="percent">%</string>
     <string name="money_unit">원</string>
     <string name="left_parentheses">(</string>
     <string name="right_parentheses">)</string>
