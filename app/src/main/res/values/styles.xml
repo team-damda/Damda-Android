@@ -1,24 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!--  Font style.  -->
-    <style name="Bold">
-        <item name="fontFamily">@font/noto_sans_kr_bold</item>
-        <item name="android:includeFontPadding">false</item>
-    </style>
+        <!--  Font style.  -->
+        <style name="Bold">
+            <item name="fontFamily">@font/noto_sans_kr_bold</item>
+            <item name="android:includeFontPadding">false</item>
+        </style>
 
-    <style name="Medium">
+        <style name="Medium">
+            <item name="fontFamily">@font/noto_sans_kr_medium</item>
+            <item name="android:includeFontPadding">false</item>
+        </style>
+
+        <style name="Regular">
+            <item name="fontFamily">@font/noto_sans_kr_regular</item>
+            <item name="android:includeFontPadding">false</item>
+        </style>
+
+        <style name="Light">
+            <item name="fontFamily">@font/noto_sans_kr_light</item>
+            <item name="android:includeFontPadding">false</item>
+        </style>
+
+    <!--  Selling & Buying style.  -->
+    <style name="Warm_grey_Medium">
         <item name="fontFamily">@font/noto_sans_kr_medium</item>
         <item name="android:includeFontPadding">false</item>
+        <item name="android:textColor">@color/warm_grey</item>
     </style>
 
-    <style name="Regular">
-        <item name="fontFamily">@font/noto_sans_kr_regular</item>
+    <style name="Black_Bold">
+        <item name="fontFamily">@font/noto_sans_kr_bold</item>
         <item name="android:includeFontPadding">false</item>
+        <item name="android:textColor">@color/black</item>
     </style>
 
-    <style name="Light">
-        <item name="fontFamily">@font/noto_sans_kr_light</item>
+    <style name="Black_Medium">
+        <item name="fontFamily">@font/noto_sans_kr_medium</item>
         <item name="android:includeFontPadding">false</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="Brownish_grey_Medium">
+        <item name="fontFamily">@font/noto_sans_kr_medium</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:textColor">@color/brownish_grey</item>
+    </style>
+
+    <style name="White_Bold">
+        <item name="fontFamily">@font/noto_sans_kr_bold</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:textColor">@color/white</item>
     </style>
 
     <!--  EditText style.  -->
@@ -56,5 +87,4 @@
         <item name="android:textSize">12sp</item>
         <item name="android:textColor">@color/white</item>
     </style>
-
 </resources>
