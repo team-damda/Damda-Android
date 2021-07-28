@@ -21,7 +21,7 @@
             <item name="android:includeFontPadding">false</item>
         </style>
 
-    <!--  Selling & Buying style.  -->
+    <!--  Graph, Selling & Buying style.  -->
     <style name="Warm_grey_Medium">
         <item name="fontFamily">@font/noto_sans_kr_medium</item>
         <item name="android:includeFontPadding">false</item>
