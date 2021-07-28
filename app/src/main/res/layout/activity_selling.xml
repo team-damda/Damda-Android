@@ -267,7 +267,8 @@
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:backgroundTint="@null"/>
 
     </FrameLayout>
 
@@ -296,7 +297,8 @@
                 android:padding="16dp"
                 android:stateListAnimator="@null"
                 android:text="@string/one"
-                android:textSize="20sp" />
+                android:textSize="20sp"
+                app:backgroundTint="@null"/>
 
             <Button
                 android:id="@+id/button_two"
@@ -308,7 +310,8 @@
                 android:padding="16dp"
                 android:stateListAnimator="@null"
                 android:text="@string/two"
-                android:textSize="20sp" />
+                android:textSize="20sp"
+                app:backgroundTint="@null"/>
 
             <Button
                 android:id="@+id/button_three"
@@ -320,7 +323,8 @@
                 android:padding="16dp"
                 android:stateListAnimator="@null"
                 android:text="@string/three"
-                android:textSize="20sp" />
+                android:textSize="20sp"
+                app:backgroundTint="@null"/>
         </TableRow>
 
         <TableRow>
@@ -335,7 +339,8 @@
                 android:padding="16dp"
                 android:stateListAnimator="@null"
                 android:text="@string/four"
-                android:textSize="20sp" />
+                android:textSize="20sp"
+                app:backgroundTint="@null"/>
 
             <Button
                 android:id="@+id/button_five"
@@ -347,7 +352,8 @@
                 android:padding="16dp"
                 android:stateListAnimator="@null"
                 android:text="@string/five"
-                android:textSize="20sp" />
+                android:textSize="20sp"
+                app:backgroundTint="@null"/>
 
             <Button
                 android:id="@+id/button_six"
@@ -359,7 +365,8 @@
                 android:padding="16dp"
                 android:stateListAnimator="@null"
                 android:text="@string/six"
-                android:textSize="20sp" />
+                android:textSize="20sp"
+                app:backgroundTint="@null"/>
         </TableRow>
 
         <TableRow>
@@ -374,7 +381,8 @@
                 android:padding="16dp"
                 android:stateListAnimator="@null"
                 android:text="@string/seven"
-                android:textSize="20sp" />
+                android:textSize="20sp"
+                app:backgroundTint="@null"/>
 
             <Button
                 android:id="@+id/button_eight"
@@ -386,7 +394,8 @@
                 android:padding="16dp"
                 android:stateListAnimator="@null"
                 android:text="@string/eight"
-                android:textSize="20sp" />
+                android:textSize="20sp"
+                app:backgroundTint="@null"/>
 
             <Button
                 android:id="@+id/button_nine"
@@ -398,7 +407,8 @@
                 android:padding="16dp"
                 android:stateListAnimator="@null"
                 android:text="@string/nine"
-                android:textSize="20sp" />
+                android:textSize="20sp"
+                app:backgroundTint="@null" />
         </TableRow>
 
         <TableRow>
@@ -414,7 +424,8 @@
                 android:paddingBottom="20dp"
                 android:stateListAnimator="@null"
                 android:text="@string/all_delete"
-                android:textSize="14sp" />
+                android:textSize="14sp"
+                app:backgroundTint="@null"/>
 
             <Button
                 android:id="@+id/button_zero"
@@ -426,7 +437,8 @@
                 android:padding="16dp"
                 android:stateListAnimator="@null"
                 android:text="@string/zero"
-                android:textSize="20sp" />
+                android:textSize="20sp"
+                app:backgroundTint="@null"/>
 
             <ImageButton
                 android:id="@+id/button_back"
@@ -463,7 +475,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/table_layout_keypad" />
+        app:layout_constraintTop_toBottomOf="@+id/table_layout_keypad"
+        app:backgroundTint="@null"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
