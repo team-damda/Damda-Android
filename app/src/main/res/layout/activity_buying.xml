@@ -223,7 +223,8 @@
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:backgroundTint="@null"/>
 
     </FrameLayout>
 
@@ -243,6 +244,7 @@
         <TableRow>
 
             <Button
+                app:backgroundTint="@null"
                 android:id="@+id/button_one"
                 style="@style/Brownish_grey_Medium"
                 android:layout_width="wrap_content"
@@ -255,6 +257,7 @@
                 android:textSize="20sp" />
 
             <Button
+                app:backgroundTint="@null"
                 android:id="@+id/button_two"
                 style="@style/Brownish_grey_Medium"
                 android:layout_width="wrap_content"
@@ -267,6 +270,7 @@
                 android:textSize="20sp" />
 
             <Button
+                app:backgroundTint="@null"
                 android:id="@+id/button_three"
                 style="@style/Brownish_grey_Medium"
                 android:layout_width="wrap_content"
@@ -282,6 +286,7 @@
         <TableRow>
 
             <Button
+                app:backgroundTint="@null"
                 android:id="@+id/button_four"
                 style="@style/Brownish_grey_Medium"
                 android:layout_width="wrap_content"
@@ -294,6 +299,7 @@
                 android:textSize="20sp" />
 
             <Button
+                app:backgroundTint="@null"
                 android:id="@+id/button_five"
                 style="@style/Brownish_grey_Medium"
                 android:layout_width="wrap_content"
@@ -306,6 +312,7 @@
                 android:textSize="20sp" />
 
             <Button
+                app:backgroundTint="@null"
                 android:id="@+id/button_six"
                 style="@style/Brownish_grey_Medium"
                 android:layout_width="wrap_content"
@@ -321,6 +328,7 @@
         <TableRow>
 
             <Button
+                app:backgroundTint="@null"
                 android:id="@+id/button_seven"
                 style="@style/Brownish_grey_Medium"
                 android:layout_width="wrap_content"
@@ -333,6 +341,7 @@
                 android:textSize="20sp" />
 
             <Button
+                app:backgroundTint="@null"
                 android:id="@+id/button_eight"
                 style="@style/Brownish_grey_Medium"
                 android:layout_width="wrap_content"
@@ -345,6 +354,7 @@
                 android:textSize="20sp" />
 
             <Button
+                app:backgroundTint="@null"
                 android:id="@+id/button_nine"
                 style="@style/Brownish_grey_Medium"
                 android:layout_width="wrap_content"
@@ -360,6 +370,7 @@
         <TableRow>
 
             <Button
+                app:backgroundTint="@null"
                 android:id="@+id/button_all_delete"
                 style="@style/Brownish_grey_Medium"
                 android:layout_width="wrap_content"
@@ -373,6 +384,7 @@
                 android:textSize="14sp" />
 
             <Button
+                app:backgroundTint="@null"
                 android:id="@+id/button_zero"
                 style="@style/Brownish_grey_Medium"
                 android:layout_width="wrap_content"
@@ -403,6 +415,7 @@
     </TableLayout>
 
     <Button
+        app:backgroundTint="@null"
         android:id="@+id/button_do_buying"
         style="@style/White_Bold"
         android:layout_width="match_parent"

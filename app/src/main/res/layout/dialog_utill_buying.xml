@@ -154,7 +154,8 @@
             android:text="@string/cancel"
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:backgroundTint="@null"/>
 
         <Button
             android:id="@+id/button_buying"
@@ -171,7 +172,8 @@
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/button_cancel" />
+            app:layout_constraintStart_toEndOf="@+id/button_cancel"
+            app:backgroundTint="@null"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
