@@ -51,4 +51,40 @@
         <item name="android:includeFontPadding">false</item>
         <item name="android:textColor">@color/white</item>
     </style>
+
+    <!--  EditText style.  -->
+    <style name="EditTextTextStyle"
+        parent="Widget.AppCompat.EditText" >
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/brownish_grey</item>
+        <item name="fontFamily">@font/noto_sans_kr_medium</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+    <style name="Bold.EditTextTitleStyle">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/dusty_orange</item>
+    </style>
+
+    <!--  Button style.  -->
+    <style name="Bold.ButtonTextStyle">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <!--  TextView style.  -->
+    <style name="Bold.BlackTitleTextStyle">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="Bold.WhiteTitleTextStyle">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="Bold.WhiteSmallTextStyle">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
 </resources>

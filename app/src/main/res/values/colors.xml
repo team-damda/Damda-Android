@@ -5,13 +5,19 @@
     <color name="purple_700">#FF3700B3</color>
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <!--  Damda color.  -->
+    <color name="dusty_orange">#e67c49</color>
     <color name="pastel_red">#e6504f</color>
     <color name="dark_sky_blue">#4f99e6</color>
-    <color name="black">#000000</color>
-    <color name="white">#ffffff</color>
-    <color name="dusty_orange">#e67c49</color>
+    <color name="warm_white">#f8f8f8</color>
+
+    <color name="grey_100">#E5E5E5</color>
+    <color name="grey_200">#D7D7D7</color>
+    <color name="grey_300">#c4c4c4</color>
+    <color name="warm_grey">#959595</color>
     <color name="brownish_grey">#636363</color>
     <color name="brownish_grey_50">#80636363</color>
-    <color name="warm_grey">#959595</color>
-    <color name="warm_white">#f8f8f8</color>
 </resources>
