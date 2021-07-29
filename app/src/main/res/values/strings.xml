@@ -1,6 +1,51 @@
 <resources>
+    <!-- Graph, selling, buying string -->
     <string name="app_name">Damda</string>
-    <!-- TODO: Remove or change this placeholder text -->
+    <string name="division">코스피</string>
+    <string name="stock_code">12345</string>
+    <string name="stock_name">카카오</string>
+    <string name="stock_money">12,345</string>
+    <string name="increase_money">▲ 1,000</string>
+    <string name="increase_rate">+3.3</string>
+    <string name="percent">%</string>
+    <string name="money_unit">원</string>
+    <string name="left_parentheses">(</string>
+    <string name="right_parentheses">)</string>
+    <string name="day">1일</string>
+    <string name="one_week">1주일</string>
+    <string name="one_month">1개월</string>
+    <string name="three_month">3개월</string>
+    <string name="one_year">1년</string>
+    <string name="buying">매수</string>
+    <string name="selling">매도</string>
+    <string name="recent">현재가</string>
+    <string name="recent_money">12,345</string>
+    <string name="two_stock">2</string>
+    <string name="stock_unit">주</string>
+    <string name="total">총</string>
+    <string name="total_money">1110,000</string>
+    <string name="buying_money">60,000</string>
+    <string name="lack">부족</string>
+    <string name="max_buying">최대로 매수</string>
+    <string name="all_delete">전체삭제</string>
+    <string name="do_buying">매수하기</string>
+    <string name="one">1</string>
+    <string name="two">2</string>
+    <string name="three">3</string>
+    <string name="four">4</string>
+    <string name="five">5</string>
+    <string name="six">6</string>
+    <string name="seven">7</string>
+    <string name="eight">8</string>
+    <string name="nine">9</string>
+    <string name="zero">0</string>
+    <string name="result_money">+600,000</string>
+    <string name="max_selling">최대로 매도</string>
+    <string name="do_selling">매도하기</string>
+    <string name="recheck">다시 한번 확인해주세요</string>
+    <string name="cancel">취소</string>
+
+    <!-- Empty String -->
     <string name="app_nonestock">보유종목이 없어요</string>
     <string name="app_nonestockadvice">검색탭으로 주식을 찾아봐요</string>
     <!-- Main String -->
