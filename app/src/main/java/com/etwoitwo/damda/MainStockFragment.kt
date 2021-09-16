@@ -10,6 +10,8 @@ import io.socket.emitter.Emitter
 import org.json.JSONException
 import org.json.JSONObject
 import android.util.Log
+import com.etwoitwo.damda.databinding.FragmentMainStockBinding
+import java.text.DecimalFormat
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -21,12 +23,14 @@ import android.util.Log
  */
 class MainStockFragment : Fragment() {
     // TODO: Rename and change types of parameters
-    lateinit var mSocket: Socket
-//    private var param2: String? = null
+    private lateinit var mSocket: Socket
+    private var _binding: FragmentMainStockBinding? = null
+    // This property is only valid between onCreateView and
+    // onDestroyView.
+    private val binding get() = _binding!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
     }
 
     override fun onCreateView(
@@ -34,12 +38,20 @@ class MainStockFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-//        mSocket = SocketApplication.get()
-//        mSocket.connect()
-//
-//        mSocket.on("reply", onMessage)
-//        mSocket.on("reply_json", onMessageJson)
-        return inflater.inflate(R.layout.fragment_main_stock, container, false)
+        mSocket = SocketApplication.get()
+        mSocket.connect()
+
+        mSocket.on("reply", onMessage)
+        mSocket.on("reply_json", onMessageJson)
+        _binding = FragmentMainStockBinding.inflate(inflater, container, false)
+        val view = binding.root
+        return view
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+        mSocket.disconnect()
     }
 
     var onMessage = Emitter.Listener {
@@ -54,12 +66,25 @@ class MainStockFragment : Fragment() {
             val jsonObj: JSONObject = it[0] as JSONObject
             val data: JSONObject = jsonObj.getJSONObject("data")
             Log.d("on socket11 nickname", data.getString("nickname"))
-            Log.d("on socket11 deposit", data.getString("deposit"))
-            Log.d("on socket11 history", data.getString("history"))
-            Log.d("on socket11 asset", data.getString("containStockAsset"))
+            activity?.runOnUiThread(Runnable {
+                // 에러 해결: Only the original thread that created a view hierarchy can touch its views.
+                kotlin.run {
+                    binding.txtviewMainNickname.setText(data.getString("nickname"))
+                    val tDecUp = DecimalFormat("#,###")
+                    val totAssetMoney = data.getString("deposit").toInt() + data.getString("containStockAsset").toInt()
+                    val totAssetMoneyString = tDecUp.format(totAssetMoney) + "원"
+                    binding.txtviewMainTotassetmoney.setText(totAssetMoneyString)
+                    val history = data.getString("history").toString()
+                    val historyString = "주식초보 $history 일차"
+                    binding.txtviewMainMystatus.setText(historyString)
+                }
+            })
+
 
         } catch (e: JSONException){
             e.printStackTrace()
         }
     }
+
+
 }
