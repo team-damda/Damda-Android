@@ -5,28 +5,28 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import io.socket.client.Socket
+import io.socket.emitter.Emitter
+import org.json.JSONException
+import org.json.JSONObject
+import android.util.Log
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
 /**
  * A simple [Fragment] subclass.
  * Use the [MainStock.newInstance] factory method to
  * create an instance of this fragment.
  */
-class MainStock : Fragment() {
+class MainStockFragment : Fragment() {
     // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+    lateinit var mSocket: Socket
+//    private var param2: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
+
     }
 
     override fun onCreateView(
@@ -34,26 +34,32 @@ class MainStock : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
+//        mSocket = SocketApplication.get()
+//        mSocket.connect()
+//
+//        mSocket.on("reply", onMessage)
+//        mSocket.on("reply_json", onMessageJson)
         return inflater.inflate(R.layout.fragment_main_stock, container, false)
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment MainStock.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            MainStock().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    var onMessage = Emitter.Listener {
+        // 서버에서 string 형식으로 보내는 경우
+        Log.d("on message11", "new message from server")
+        Log.d("server message11", it[0].toString())
+    }
+
+    var onMessageJson = Emitter.Listener {
+        // 서버애서 json 형식으로 보내는 경우
+        try {
+            val jsonObj: JSONObject = it[0] as JSONObject
+            val data: JSONObject = jsonObj.getJSONObject("data")
+            Log.d("on socket11 nickname", data.getString("nickname"))
+            Log.d("on socket11 deposit", data.getString("deposit"))
+            Log.d("on socket11 history", data.getString("history"))
+            Log.d("on socket11 asset", data.getString("containStockAsset"))
+
+        } catch (e: JSONException){
+            e.printStackTrace()
+        }
     }
 }
