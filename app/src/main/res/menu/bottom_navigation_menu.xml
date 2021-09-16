@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/item_bottomnav_main"
+        android:enabled="true"
+        android:icon="@drawable/ic_bottomnav_main"
+        android:title="@string/bottomnav_main"/>
+    <item
+        android:id="@+id/item_bottomnav_search"
+        android:enabled="true"
+        android:icon="@drawable/ic_bottomnav_search"
+        android:title="@string/bottomnav_search"/>
+    <item
+        android:id="@+id/item_bottomnav_wallet"
+        android:enabled="true"
+        android:icon="@drawable/ic_bottomnav_wallet"
+        android:title="@string/bottomnav_wallet"/>
+    <item
+        android:id="@+id/item_bottomnav_more"
+        android:enabled="true"
+        android:icon="@drawable/ic_bottomnav_more"
+        android:title="@string/bottomnav_more"/>
+</menu>
