@@ -12,8 +12,8 @@ class SocketApplication {
         fun get(end:String, queryString: String): Socket {
             try {
                 val options = IO.Options()
-//                val baseUrl = BuildConfig.MY_SERVER_API_KEY
-                val baseUrl = BuildConfig.AWS_SERVER_API_KEY
+                val baseUrl = BuildConfig.SERVER_API_KEY
+//                val baseUrl = BuildConfig.AWS_SERVER_API_KEY
                 options.query = queryString
 
                 Log.d("connect socket111", "$baseUrl$end")
