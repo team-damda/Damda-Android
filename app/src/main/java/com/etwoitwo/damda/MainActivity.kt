@@ -2,11 +2,13 @@ package com.etwoitwo.damda
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
+import com.etwoitwo.damda.feature.more.MoreFragment
+import com.etwoitwo.damda.feature.wallet.WalletFragment
+import com.etwoitwo.damda.feature.search.SearchFragment
+import com.etwoitwo.damda.feature.main.MainStockFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.android.material.navigation.NavigationView
 
 class MainActivity : AppCompatActivity() {
 //    lateinit var mSocket: Socket
