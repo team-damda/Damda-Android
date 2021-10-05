@@ -60,8 +60,8 @@ class MainStockFragment : Fragment() {
         viewPager = binding.pagerMainStocklist
 
         val pagerAdapter = PagerFragmentStateAdapter(requireActivity())
-        pagerAdapter.addFragment(MainInterestFragment())
         pagerAdapter.addFragment(MainContainFragment())
+        pagerAdapter.addFragment(MainInterestFragment())
         viewPager.adapter = pagerAdapter
         viewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
             override fun onPageSelected(position: Int){

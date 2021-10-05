@@ -35,7 +35,7 @@ class MainContainFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_main_contain, container, false)
+        return inflater.inflate(R.layout.fragment_holding_stock_none, container, false)
     }
 
     companion object {
