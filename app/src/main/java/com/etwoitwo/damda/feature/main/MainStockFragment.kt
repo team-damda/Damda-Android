@@ -13,10 +13,10 @@ import android.util.Log
 import android.widget.Toast
 import androidx.viewpager2.widget.ViewPager2
 import com.etwoitwo.damda.model.network.RetrofitService
-import com.etwoitwo.damda.model.network.SocketApplication
 import com.etwoitwo.damda.databinding.FragmentMainStockBinding
 import com.etwoitwo.damda.feature.common.PagerFragmentStateAdapter
 import com.etwoitwo.damda.model.dataclass.MainStatusData
+import com.etwoitwo.damda.model.network.SocketApplication
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import okhttp3.ResponseBody
