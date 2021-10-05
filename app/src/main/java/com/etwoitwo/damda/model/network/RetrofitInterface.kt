@@ -1,5 +1,7 @@
-package com.etwoitwo.damda
+package com.etwoitwo.damda.model.network
 
+
+import com.etwoitwo.damda.model.dataclass.MainStatusData
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Query
