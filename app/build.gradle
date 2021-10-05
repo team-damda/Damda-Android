@@ -3,11 +3,17 @@ plugins {
     id 'kotlin-android'
 }
 
+Properties properties = new Properties()
+properties.load(project.rootProject.file('local.properties').newDataInputStream())
+
 android {
     compileSdkVersion 30
     buildToolsVersion "30.0.3"
 
     defaultConfig {
+        buildConfigField "String", "SERVER_API_KEY", properties['server_api_key']
+
+
         applicationId "com.etwoitwo.damda"
         minSdkVersion 21
         targetSdkVersion 30
