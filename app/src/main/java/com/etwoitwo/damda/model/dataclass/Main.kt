@@ -1,4 +1,4 @@
-package com.etwoitwo.damda
+package com.etwoitwo.damda.model.dataclass
 
 data class MainStatusData(
     val status: Int,

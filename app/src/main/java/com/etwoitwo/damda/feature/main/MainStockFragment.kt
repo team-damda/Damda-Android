@@ -1,4 +1,4 @@
-package com.etwoitwo.damda
+package com.etwoitwo.damda.feature.main
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -11,7 +11,14 @@ import org.json.JSONException
 import org.json.JSONObject
 import android.util.Log
 import android.widget.Toast
+import androidx.viewpager2.widget.ViewPager2
+import com.etwoitwo.damda.model.network.RetrofitService
+import com.etwoitwo.damda.model.network.SocketApplication
 import com.etwoitwo.damda.databinding.FragmentMainStockBinding
+import com.etwoitwo.damda.feature.common.PagerFragmentStateAdapter
+import com.etwoitwo.damda.model.dataclass.MainStatusData
+import com.google.android.material.tabs.TabLayout
+import com.google.android.material.tabs.TabLayoutMediator
 import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Callback
@@ -21,12 +28,15 @@ import java.text.DecimalFormat
 
 class MainStockFragment : Fragment() {
     // TODO: Rename and change types of parameters
+    private lateinit var viewPager: ViewPager2
+    private lateinit var tabLayout: TabLayout
     private lateinit var mSocket: Socket
     private var _binding: FragmentMainStockBinding? = null
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
-    var data: MainStatusData ?= null
+
+    var data: MainStatusData?= null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,14 +46,39 @@ class MainStockFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        mSocket = SocketApplication.get()
+        // * socket 연결
+        mSocket = SocketApplication.get("main/status", "token=1")
         mSocket.connect()
 
-        mSocket.on("reply", onMessage)
+
         mSocket.on("reply_json", onMessageJson)
         _binding = FragmentMainStockBinding.inflate(inflater, container, false)
         loadData()
+
+        // * 탭 레이아웃, 뷰 페이저 연결
+        tabLayout = binding.tabMainMystock
+        viewPager = binding.pagerMainStocklist
+
+        val pagerAdapter = PagerFragmentStateAdapter(requireActivity())
+        pagerAdapter.addFragment(MainInterestFragment())
+        pagerAdapter.addFragment(MainContainFragment())
+        viewPager.adapter = pagerAdapter
+        viewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
+            override fun onPageSelected(position: Int){
+
+                super.onPageSelected(position)
+//                Log.e("ViewPagerFragment", "Page ${position+1}")
+            }
+        })
+        // tablayout attach
+        TabLayoutMediator(tabLayout, viewPager){ tab, position ->
+            val tabName = when(position){
+                0 -> "보유종목"
+                1 -> "관심종목"
+                else -> "-"
+            }
+            tab.text = tabName
+        }.attach()
         return binding.root
     }
 
@@ -53,11 +88,6 @@ class MainStockFragment : Fragment() {
         mSocket.disconnect()
     }
 
-    var onMessage = Emitter.Listener {
-        // 서버에서 string 형식으로 보내는 경우
-        Log.d("on message11", "new message from server")
-        Log.d("server message11", it[0].toString())
-    }
 
     var onMessageJson = Emitter.Listener {
         // 서버애서 json 형식으로 보내는 경우
@@ -86,7 +116,7 @@ class MainStockFragment : Fragment() {
     }
     private fun loadData(){
         // call back 등록해서 통신 요청
-        val userid = 3
+        val userid = 1
         // TODO 로그인 이미 했을 시 해당 토큰으로 보내기
         val call: Call<MainStatusData> = RetrofitService.service_ct_tab.requestAllData(UserId = userid)
 
@@ -100,7 +130,7 @@ class MainStockFragment : Fragment() {
 
                 response.takeIf { it.isSuccessful }
                     ?.body()
-                    ?.let { it ->
+                    ?.let { _ ->
                         data = response.body()
                         Log.d("loadData11 responsedata", data.toString())
                         data?.data?.let { it1 ->

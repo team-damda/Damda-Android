@@ -1,11 +1,12 @@
-package com.etwoitwo.damda
+package com.etwoitwo.damda.feature.search
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.etwoitwo.damda.R
 
-class SignUpActivity : AppCompatActivity() {
+class SearchListActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_sign_up)
+        setContentView(R.layout.activity_search_list)
     }
 }
