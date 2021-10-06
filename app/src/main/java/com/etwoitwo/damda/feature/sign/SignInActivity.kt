@@ -1,7 +1,8 @@
-package com.etwoitwo.damda
+package com.etwoitwo.damda.feature.sign
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.etwoitwo.damda.R
 
 class SignInActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -170,6 +170,13 @@ obj/
 
 # OS-specific files
 .DS_Store
+/build
+/captures
+.externalNativeBuild
+.cxx
+local.properties
+/.idea/render.experimental.xml
+/app/src/main/res/values/secrets.xml
 .DS_Store?
 ._*
 .Spotlight-V100
