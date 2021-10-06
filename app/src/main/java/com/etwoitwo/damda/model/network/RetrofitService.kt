@@ -5,8 +5,8 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 object RetrofitService {
-//    private const val BASE_URL = BuildConfig.MY_SERVER_API_KEY
-    private const val BASE_URL = BuildConfig.AWS_SERVER_API_KEY
+    private const val BASE_URL = BuildConfig.SERVER_API_KEY
+//    private const val BASE_URL = BuildConfig.AWS_SERVER_API_KEY
 
     private val retrofit: Retrofit = Retrofit.Builder()
         .baseUrl(BASE_URL)

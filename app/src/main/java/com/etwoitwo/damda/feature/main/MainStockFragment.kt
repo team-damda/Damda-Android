@@ -60,8 +60,8 @@ class MainStockFragment : Fragment() {
         viewPager = binding.pagerMainStocklist
 
         val pagerAdapter = PagerFragmentStateAdapter(requireActivity())
-        pagerAdapter.addFragment(MainInterestFragment())
         pagerAdapter.addFragment(MainContainFragment())
+        pagerAdapter.addFragment(MainInterestFragment())
         viewPager.adapter = pagerAdapter
         viewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
             override fun onPageSelected(position: Int){
@@ -118,7 +118,7 @@ class MainStockFragment : Fragment() {
         // call back 등록해서 통신 요청
         val userid = 1
         // TODO 로그인 이미 했을 시 해당 토큰으로 보내기
-        val call: Call<MainStatusData> = RetrofitService.service_ct_tab.requestAllData(UserId = userid)
+        val call: Call<MainStatusData> = RetrofitService.service_ct_tab.requestMainStatus(UserId = userid)
 
         call.enqueue(object : Callback<MainStatusData> {
             override fun onFailure(call: Call<MainStatusData>, t: Throwable) {
