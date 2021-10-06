@@ -8,6 +8,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.Toast
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.etwoitwo.damda.R
@@ -21,9 +23,10 @@ import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import kotlin.concurrent.fixedRateTimer
 
 class MainInterestFragment : Fragment() {
-
+//    private lateinit var fragmentManager: FragmentManager
     var data: StockData?= null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,11 +40,15 @@ class MainInterestFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         loadData()
-        if (data == null || data?.data == null || data?.data?.size == 0){
-            // main/interestStocks에서 data 받아 왔는데 empty일 경우
-            return inflater.inflate(R.layout.fragment_interest_stock_none, container, false)
-        }
-        return inflater.inflate(R.layout.fragment_stock_list, container, false)
+        var view = inflater.inflate(R.layout.fragment_stock_list, container, false)
+
+
+
+//        if (data == null || data?.data == null || data?.data?.size == 0){
+//            // main/interestStocks에서 data 받아 왔는데 empty일 경우
+//            view = inflater.inflate(R.layout.fragment_interest_stock_none, container, false)
+//        }
+        return view
     }
 
     private fun setAdapter(stockList: ArrayList<StockData.Data>){
@@ -52,9 +59,16 @@ class MainInterestFragment : Fragment() {
         stockListAdapter.notifyDataSetChanged()
     }
 
+    private fun replaceToEmptyFragment(){
+        val fragmentManager = childFragmentManager
+        val fragTransaction:FragmentTransaction = fragmentManager.beginTransaction()
+        fragTransaction.add(R.id.layout_stocklist_wrapper, MainInterestNoneFragment())
+        fragTransaction.commit()
+    }
+
     private fun loadData(){
         // call back 등록해서 통신 요청
-        val userid = 3
+        val userid = 2
         // TODO 로그인 이미 했을 시 해당 토큰으로 보내기
         val call: Call<StockData> = RetrofitService.service_ct_tab.requestMainInterest(UserId=userid)
 //        val call: Call<StockData> = RetrofitService.service_ct_tab.requestMainInterest()
@@ -73,7 +87,11 @@ class MainInterestFragment : Fragment() {
                         data = response.body()
                         Log.d("loadData11 responsedata", data?.data.toString())
                         data?.data?.let { it1 ->
-                            setAdapter(it1)
+                            if (it1.size > 0){
+                                setAdapter(it1)
+                            } else {
+                                replaceToEmptyFragment()
+                            }
                         }
                     }?: showError(response.errorBody())
 
@@ -86,5 +104,6 @@ class MainInterestFragment : Fragment() {
         val ob = JSONObject(e.string())
         Toast.makeText(context, "네트워크 에러", Toast.LENGTH_SHORT).show()
         Log.d("main interest ", "$ob")
+        replaceToEmptyFragment()
     }
 }
