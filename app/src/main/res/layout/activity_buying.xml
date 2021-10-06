@@ -157,7 +157,6 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="4dp"
-            android:layout_marginRight="4dp"
             android:text="@string/money_unit"
             android:textColor="@color/pastel_red"
             android:textSize="14sp"
@@ -201,8 +200,7 @@
         android:orientation="horizontal"
         app:layout_constraintBottom_toTopOf="@+id/table_layout_keypad"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/table_layout_keypad">
+        app:layout_constraintStart_toStartOf="parent">
 
         <Button
             android:id="@+id/button_max_buying"
@@ -212,16 +210,16 @@
             android:layout_marginStart="16dp"
             android:layout_marginLeft="16dp"
             android:layout_marginTop="16dp"
-            android:layout_marginBottom="16dp"
             android:layout_marginEnd="16dp"
             android:layout_marginRight="16dp"
+            android:layout_marginBottom="16dp"
             android:background="@drawable/bg_all_buying_button"
             android:text="@string/max_buying"
             android:textSize="18sp"
+            app:backgroundTint="@null"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:backgroundTint="@null"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
     </FrameLayout>
 
