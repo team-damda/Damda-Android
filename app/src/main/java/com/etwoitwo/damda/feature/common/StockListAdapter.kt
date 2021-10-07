@@ -76,19 +76,11 @@ class StockListAdapter(private var list: MutableList<StockData.Data>): RecyclerV
             Log.d("ListAdapter", item.stockId.toString()+" "+item.stockName)
 
             /* 공통 영역 */
-            if (item.marketType != null){
-                marketType.text = item.marketType
-            }
-            if (item.stockId != null) {
-                stockCode.text = item.stockId.toString()
-            }
-            if (item.stockName != null) {
-                stockName.text = item.stockName
-            }
-            if (item.currentPrice != null ){
-                val tDecUp = DecimalFormat("#,###")
-                stockPrice.text = tDecUp.format(item.currentPrice) + "원"
-            }
+            marketType.text = item.marketType
+            stockCode.text = item.stockId
+            stockName.text = item.stockName
+            val tDecUp = DecimalFormat("#,###")
+            stockPrice.text = tDecUp.format(item.currentPrice) + "원"
 
             /* 메인-관심종목 영역 */
             if (item.todayChange != null ){
@@ -99,10 +91,24 @@ class StockListAdapter(private var list: MutableList<StockData.Data>): RecyclerV
 
             }
             if (item.todayRoC != null){
-                val sign = if (item.todayRoC > 0){"+"} else if(item.todayRoC <0){"-"} else {""}
+                val sign = if (item.todayRoC > 0){"+"} else {""}
                 val textColor = getColorDouble(stockPercent.context, item.todayRoC)
                 stockPercent.text = sign + String.format("%.2f", item.todayRoC) + "%"
                 stockPercent.setTextColor(textColor)
+            }
+
+            /* 공통-보유종목 영역 */
+            if (item.totProfitLoss != null && item.totCnt != null){
+                val sign = if (item.totProfitLoss > 0){"+"} else {""}
+                val textColor = getColorInt(stockTotPrice.context, item.totProfitLoss)
+                stockTotPrice.setTextColor(textColor)
+                stockTotPrice.text = tDecUp.format(item.totProfitLoss) + "원(${item.totCnt}주)"
+            }
+            if (item.totProfitLossRate != null){
+                val sign = if (item.totProfitLossRate > 0){"+"} else {""}
+                val textColor = getColorDouble(stockPercent.context, item.totProfitLossRate)
+                stockPercent.setTextColor(textColor)
+                stockPercent.text = sign + String.format("%.2f", item.totProfitLossRate) + "%"
             }
             // TODO null 물어보고 조건문 안에 넣어주기
             transContent.visibility = View.INVISIBLE

@@ -13,4 +13,7 @@ interface RetrofitInterface {
 
     @GET("main/interestStocks")
     fun requestMainInterest(@Query("UserId") UserId: Int): Call<StockData>
+
+    @GET("common/holdingStocks")
+    fun requestCommonHolding(@Query("UserId") UserId: Int): Call<StockData>
 }
