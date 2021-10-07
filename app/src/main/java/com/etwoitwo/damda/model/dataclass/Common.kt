@@ -9,7 +9,7 @@ data class StockData(
     ) {
     data class Data(
         val marketType: String,
-        val stockId: Int,
+        val stockId: String,
         val stockName: String,
         val currentPrice: Int,
 
@@ -18,6 +18,7 @@ data class StockData(
         val todayRoC: Double? = null,
 
         /*[메인,지갑-보유종목] common/holdingStocks */
+        val totCnt: Int? = null,
         val totProfitLoss: Int? = null,
         val totProfitLossRate: Double? = null,
 

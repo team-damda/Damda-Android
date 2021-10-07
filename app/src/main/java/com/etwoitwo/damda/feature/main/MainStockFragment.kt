@@ -14,6 +14,7 @@ import android.widget.Toast
 import androidx.viewpager2.widget.ViewPager2
 import com.etwoitwo.damda.model.network.RetrofitService
 import com.etwoitwo.damda.databinding.FragmentMainStockBinding
+import com.etwoitwo.damda.feature.common.CommonHoldingFragment
 import com.etwoitwo.damda.feature.common.PagerFragmentStateAdapter
 import com.etwoitwo.damda.model.dataclass.MainStatusData
 import com.etwoitwo.damda.model.network.SocketApplication
@@ -60,7 +61,7 @@ class MainStockFragment : Fragment() {
         viewPager = binding.pagerMainStocklist
 
         val pagerAdapter = PagerFragmentStateAdapter(requireActivity())
-        pagerAdapter.addFragment(MainContainFragment())
+        pagerAdapter.addFragment(CommonHoldingFragment())
         pagerAdapter.addFragment(MainInterestFragment())
         viewPager.adapter = pagerAdapter
         viewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
