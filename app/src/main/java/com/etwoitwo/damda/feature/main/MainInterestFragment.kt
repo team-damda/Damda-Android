@@ -54,7 +54,7 @@ class MainInterestFragment : Fragment() {
 
     private fun loadData(){
         // call back 등록해서 통신 요청
-        val userid = 2
+        val userid = 1
         // TODO 로그인 이미 했을 시 해당 토큰으로 보내기
         val call: Call<StockData> = RetrofitService.service_ct_tab.requestMainInterest(UserId=userid)
 //        val call: Call<StockData> = RetrofitService.service_ct_tab.requestMainInterest()
@@ -62,6 +62,8 @@ class MainInterestFragment : Fragment() {
         call.enqueue(object : Callback<StockData> {
             override fun onFailure(call: Call<StockData>, t: Throwable) {
                 Log.d("main interest - ", "loadData11 error")
+                Toast.makeText(context, "네트워크 에러", Toast.LENGTH_SHORT).show()
+                replaceToEmptyFragment()
             }
 
             override fun onResponse(call: Call<StockData>, response: Response<StockData>) {
