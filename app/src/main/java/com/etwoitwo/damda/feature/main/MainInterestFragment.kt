@@ -95,6 +95,7 @@ class MainInterestFragment : Fragment() {
                         setAdapter(dataset)
                     } else {
                         Log.d("socket main interest", "replaceToEmptyFragment")
+                        setAdapter(dataset)
                         replaceToEmptyFragment()
                     }
                 }
