@@ -102,7 +102,7 @@ class StockListAdapter(private var list: MutableList<StockData.Data>): RecyclerV
                 val sign = if (item.totProfitLoss > 0){"+"} else {""}
                 val textColor = getColorInt(stockTotPrice.context, item.totProfitLoss)
                 stockTotPrice.setTextColor(textColor)
-                stockTotPrice.text = tDecUp.format(item.totProfitLoss) + "원(${item.totCnt}주)"
+                stockTotPrice.text = sign + tDecUp.format(item.totProfitLoss) + "원(${item.totCnt}주)"
             }
             if (item.totProfitLossRate != null){
                 val sign = if (item.totProfitLossRate > 0){"+"} else {""}
