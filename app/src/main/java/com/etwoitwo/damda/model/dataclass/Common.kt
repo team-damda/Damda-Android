@@ -1,5 +1,19 @@
 package com.etwoitwo.damda.model.dataclass
 
+data class CommonStatusData(
+    val status: Int,
+    val success: Boolean,
+    val message: String,
+    val data: Data
+){
+    data class Data (
+        val nickname: String,
+        val history: String,
+        val deposit: String,
+        val containStockAsset: String,
+    )
+}
+
 data class StockData(
     /* 메인 화면, 지갑 화면의 보유종목, 거래내역, 관심종목 부분의 각 아이템들 구성하는 데이터 형식*/
     val status: Int,

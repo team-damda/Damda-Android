@@ -16,7 +16,7 @@ import com.etwoitwo.damda.model.network.RetrofitService
 import com.etwoitwo.damda.databinding.FragmentMainStockBinding
 import com.etwoitwo.damda.feature.common.CommonHoldingFragment
 import com.etwoitwo.damda.feature.common.PagerFragmentStateAdapter
-import com.etwoitwo.damda.model.dataclass.MainStatusData
+import com.etwoitwo.damda.model.dataclass.CommonStatusData
 import com.etwoitwo.damda.model.network.SocketApplication
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
@@ -37,7 +37,7 @@ class MainStockFragment : Fragment() {
     // onDestroyView.
     private val binding get() = _binding!!
 
-    var data: MainStatusData?= null
+    var data: CommonStatusData?= null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,7 +48,7 @@ class MainStockFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // * socket 연결
-        mSocket = SocketApplication.get("main/status", "token=1")
+        mSocket = SocketApplication.get("common/status", "token=1")
         mSocket.connect()
 
 
@@ -119,14 +119,14 @@ class MainStockFragment : Fragment() {
         // call back 등록해서 통신 요청
         val userid = 1
         // TODO 로그인 이미 했을 시 해당 토큰으로 보내기
-        val call: Call<MainStatusData> = RetrofitService.service_ct_tab.requestMainStatus(UserId = userid)
+        val call: Call<CommonStatusData> = RetrofitService.service_ct_tab.requestCommonStatus(UserId = userid)
 
-        call.enqueue(object : Callback<MainStatusData> {
-            override fun onFailure(call: Call<MainStatusData>, t: Throwable) {
+        call.enqueue(object : Callback<CommonStatusData> {
+            override fun onFailure(call: Call<CommonStatusData>, t: Throwable) {
                 Log.d("loadData11 error", "from loaddata")
             }
 
-            override fun onResponse(call: Call<MainStatusData>, response: Response<MainStatusData>) {
+            override fun onResponse(call: Call<CommonStatusData>, response: Response<CommonStatusData>) {
                 Log.d("loadData11 response", "from loaddata")
 
                 response.takeIf { it.isSuccessful }
