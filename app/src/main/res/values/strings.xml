@@ -25,11 +25,11 @@
     <string name="buying">매수</string>
     <string name="selling">매도</string>
     <string name="recent">현재가</string>
-    <string name="recent_money">12,345</string>
-    <string name="two_stock">2</string>
+    <string name="recent_money">0</string>
+    <string name="two_stock">0</string>
     <string name="stock_unit">주</string>
     <string name="total">총</string>
-    <string name="total_money">1110,000</string>
+    <string name="total_money">0</string>
     <string name="buying_money">60,000</string>
     <string name="lack">부족</string>
     <string name="max_buying">최대로 매수</string>
