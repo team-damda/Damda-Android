@@ -33,8 +33,6 @@ class MainStockFragment : Fragment() {
     private lateinit var tabLayout: TabLayout
     private lateinit var mSocket: Socket
     private var _binding: FragmentMainStockBinding? = null
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
 
     var data: CommonStatusData?= null
@@ -47,13 +45,17 @@ class MainStockFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        /* 라이프사이클 가장 첫번째로 실행됨 */
         // * socket 연결
         mSocket = SocketApplication.get("common/status", "token=1")
         mSocket.connect()
 
-
         mSocket.on("reply_json", onMessageJson)
+
+        // * 뷰 바인딩 적용
         _binding = FragmentMainStockBinding.inflate(inflater, container, false)
+
+        // * rest api로 초기 데이터 받아오기
         loadData()
 
         // * 탭 레이아웃, 뷰 페이저 연결
@@ -80,10 +82,12 @@ class MainStockFragment : Fragment() {
             }
             tab.text = tabName
         }.attach()
+
         return binding.root
     }
 
     override fun onDestroyView() {
+        /* 라이프사이클 마지막: 뷰 파괴될 때 */
         super.onDestroyView()
         _binding = null
         mSocket.disconnect()
@@ -91,7 +95,7 @@ class MainStockFragment : Fragment() {
 
 
     var onMessageJson = Emitter.Listener {
-        // 서버애서 json 형식으로 보내는 경우
+        /* [소켓] 전송 받는 이벤트 리스너(서버 -> 안드) */
         try {
             val jsonObj: JSONObject = it[0] as JSONObject
             val data: JSONObject = jsonObj.getJSONObject("data")
@@ -109,14 +113,12 @@ class MainStockFragment : Fragment() {
                     binding.txtviewMainMystatus.text = historyString
                 }
             })
-
-
         } catch (e: JSONException){
             e.printStackTrace()
         }
     }
     private fun loadData(){
-        // call back 등록해서 통신 요청
+        /* [REST] 초기 데이터 받아 와서 화면에 설정하기 */
         val userid = 1
         // TODO 로그인 이미 했을 시 해당 토큰으로 보내기
         val call: Call<CommonStatusData> = RetrofitService.service_ct_tab.requestCommonStatus(UserId = userid)
@@ -151,6 +153,7 @@ class MainStockFragment : Fragment() {
         })
     }
     private fun showError(error: ResponseBody?){
+        /* [REST] 초기 데이터 받아 올때 에러 터지는 경우 호출됨 */
         val e = error ?: return
         val ob = JSONObject(e.string())
         Toast.makeText(context, "네트워크 에러", Toast.LENGTH_SHORT).show()
