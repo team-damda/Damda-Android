@@ -14,7 +14,12 @@ import com.etwoitwo.damda.R
 import com.etwoitwo.damda.feature.common.StockListAdapter
 import com.etwoitwo.damda.model.dataclass.StockData
 import com.etwoitwo.damda.model.network.RetrofitService
+import com.etwoitwo.damda.model.network.SocketApplication
+import io.socket.client.Socket
+import io.socket.emitter.Emitter
 import okhttp3.ResponseBody
+import org.json.JSONArray
+import org.json.JSONException
 import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
@@ -22,6 +27,7 @@ import retrofit2.Response
 
 class MainInterestFragment : Fragment() {
     var data: StockData?= null
+    private lateinit var mSocket: Socket
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,9 +39,20 @@ class MainInterestFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
+        mSocket = SocketApplication.get("main/interestStocks", "token=2")
+        mSocket.connect()
+
+        mSocket.on("reply_json", onMessageJson)
         loadData()
         return inflater.inflate(R.layout.fragment_stock_list, container, false)
     }
+
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        mSocket.disconnect()
+    }
+
 
     private fun setAdapter(stockList: ArrayList<StockData.Data>){
         val stockListAdapter = StockListAdapter(stockList)
@@ -45,9 +62,54 @@ class MainInterestFragment : Fragment() {
         stockListAdapter.notifyDataSetChanged()
     }
 
+
+    var onMessageJson = Emitter.Listener {
+        // 서버애서 json 형식으로 보내는 경우
+        try {
+            val jsonObj: JSONObject = it[0] as JSONObject
+            val jsonarray_data: JSONArray = jsonObj.getJSONArray("data")
+            Log.d("main interest socket", jsonarray_data.toString())
+            // json array 형식 -> StockData.Data array 형식으로 변환해주기
+
+            activity?.runOnUiThread(Runnable {
+                // 에러 해결: Only the original thread that created a view hierarchy can touch its views.
+                kotlin.run {
+
+                    var dataset = arrayListOf<StockData.Data>()
+                    for (i in 0 until jsonarray_data.length()){
+
+                        val tempJson: JSONObject = jsonarray_data.getJSONObject(i)
+                        val tempData: StockData.Data = StockData.Data(
+                            marketType = tempJson.getString("marketType"),
+                            stockId = tempJson.getString("stockId"),
+                            stockName = tempJson.getString("stockName"),
+                            currentPrice = tempJson.getInt("currentPrice"),
+                            todayChange = tempJson.getInt("todayChange"),
+                            todayRoC = tempJson.getDouble("todayRoC"),
+                        )
+                        dataset.add(tempData)
+                    }
+
+                    if (dataset.size > 0){
+                        Log.d("socket main interest", "dataset.size > 0")
+                        setAdapter(dataset)
+                    } else {
+                        Log.d("socket main interest", "replaceToEmptyFragment")
+                        replaceToEmptyFragment()
+                    }
+                }
+            })
+
+        } catch (e: JSONException){
+            e.printStackTrace()
+        }
+    }
+
     private fun replaceToEmptyFragment(){
+        // TODO add기 때문에 기존 뷰가 그대로 보인다는 문제점 해결하기
         val fragmentManager = childFragmentManager
         val fragTransaction:FragmentTransaction = fragmentManager.beginTransaction()
+
         fragTransaction.add(R.id.layout_stocklist_wrapper, MainInterestNoneFragment())
         fragTransaction.commit()
     }
