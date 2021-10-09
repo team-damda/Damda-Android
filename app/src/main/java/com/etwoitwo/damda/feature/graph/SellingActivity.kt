@@ -1,12 +1,14 @@
 package com.etwoitwo.damda.feature.graph
 
 import android.content.Context
+import android.graphics.Color
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
 import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import com.etwoitwo.damda.databinding.ActivitySellingBinding
 
 private lateinit var binding: ActivitySellingBinding
@@ -19,13 +21,21 @@ class SellingActivity : AppCompatActivity() {
 
         var BinderRecentMoney = binding.textViewRecentMoney
         var BinderInputStock = binding.editTextInputStock
-        BinderRecentMoney.setText("30000")
+        BinderRecentMoney.setText("1248")
 
         var recentMoney : Int  = Integer.parseInt(BinderRecentMoney.text.toString())
+        var totalMoney = 0
+        var inputStock = 0
 
+        var BinderResultMoney = binding.textViewResultMoney
+        BinderResultMoney.setText("+500000")
+
+        var storedStock = 100 // 현재 내가 가진 주식 개수 적어주기
+        var restStock = 0
+        var lack = ""
+
+        // 주의 개수를 입력하면 실시간으로 총 가격이 변함
         BinderInputStock.addTextChangedListener(object: TextWatcher {
-            var totalMoney = 0
-            var stock = 0
             override fun afterTextChanged(s: Editable?) {
             }
 
@@ -34,34 +44,58 @@ class SellingActivity : AppCompatActivity() {
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 if (s.toString() == ""){
-                    stock = 0
+                    inputStock = 0
                     totalMoney = 0
+                    lack="남음"
+                    restStock = storedStock
                     binding.textViewTotalMoney.setText("0")
                 }
                 else {
-                    stock = Integer.parseInt(s.toString())
-                    totalMoney = stock * recentMoney
+                    inputStock = Integer.parseInt(s.toString())
+                    totalMoney = inputStock * recentMoney
                     binding.textViewTotalMoney.setText(totalMoney.toString())
+
+                    if (storedStock > inputStock) {
+                        restStock = storedStock - inputStock
+                        lack = "남음"
+                        changeColor("#000000")
+
+                    }
+                    else {
+                        restStock = inputStock - storedStock
+                        lack = "부족"
+                        changeColor("#e6504f")
+                    }
                 }
+                binding.textViewRestStock.setText(restStock.toString())
+                binding.textViewLack.setText(lack)
             }
         })
 
-        addnumberKeyboard()
+        addNumberKeyboard()
 
         binding.buttonMaxSelling.setOnClickListener{
-            // 최대로 매도
+            binding.editTextInputStock.setText(storedStock.toString())
+            binding.textViewRestStock.setText("0")
+            totalMoney = inputStock * recentMoney
+            binding.textViewTotalMoney.setText(totalMoney.toString())
+            binding.textViewLack.setText(lack)
+            changeColor("#000000")
         }
         binding.buttonSelling.setOnClickListener{
-            // 매도하기
+            // 매도하기: alert 으로 넘어간다.
         }
     }
 
-    fun hideKeyboard() {
-        val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-        imm.hideSoftInputFromWindow(binding.editTextInputStock.windowToken, 0)
+    fun changeColor(colorString: String){
+        binding.textViewMoneyUnit3.setTextColor(Color.parseColor(colorString))
+        binding.textViewLack.setTextColor(Color.parseColor(colorString))
+        binding.textViewLeftParentheses2.setTextColor(Color.parseColor(colorString))
+        binding.textViewRightParentheses2.setTextColor(Color.parseColor(colorString))
+        binding.textViewRestStock.setTextColor(Color.parseColor(colorString))
     }
 
-    fun addnumberKeyboard (){
+    fun addNumberKeyboard (){
         binding.buttonZero.setOnClickListener{
             binding.editTextInputStock.append("0")
         }
