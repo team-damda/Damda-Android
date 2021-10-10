@@ -25,13 +25,11 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class MainInterestFragment : Fragment() {
+class MainInterestFragment(var intSocket: Socket) : Fragment() {
     var data: StockData?= null
-    private lateinit var mSocket: Socket
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
     }
 
     override fun onCreateView(
@@ -39,18 +37,16 @@ class MainInterestFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        mSocket = SocketApplication.get("main/interestStocks", "token=2")
-        mSocket.connect()
-
-        mSocket.on("reply_json", onMessageJson)
+        intSocket.connect()
+        intSocket.on("reply_json", onMessageJson)
         loadData()
         return inflater.inflate(R.layout.fragment_stock_list, container, false)
     }
 
 
     override fun onDestroyView() {
+        Log.d("destroy view", "main interest")
         super.onDestroyView()
-        mSocket.disconnect()
     }
 
 

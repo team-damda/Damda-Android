@@ -31,7 +31,11 @@ class MainStockFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private lateinit var viewPager: ViewPager2
     private lateinit var tabLayout: TabLayout
-    private lateinit var mSocket: Socket
+
+    private lateinit var statSocket: Socket
+    private lateinit var intSocket: Socket
+    private lateinit var containSocket: Socket
+
     private var _binding: FragmentMainStockBinding? = null
     private val binding get() = _binding!!
 
@@ -47,10 +51,14 @@ class MainStockFragment : Fragment() {
     ): View? {
         /* 라이프사이클 가장 첫번째로 실행됨 */
         // * socket 연결
-        mSocket = SocketApplication.get("common/status", "token=1")
-        mSocket.connect()
+        statSocket = SocketApplication.get("common/status", "token=1")
+        intSocket = SocketApplication.get("main/interestStocks", "token=1")
+        containSocket = SocketApplication.get("common/containStocks", "token=1")
 
-        mSocket.on("reply_json", onMessageJson)
+        // * status socket 연결
+        statSocket.connect()
+
+        statSocket.on("reply_json", onMessageJson)
 
         // * 뷰 바인딩 적용
         _binding = FragmentMainStockBinding.inflate(inflater, container, false)
@@ -63,14 +71,12 @@ class MainStockFragment : Fragment() {
         viewPager = binding.pagerMainStocklist
 
         val pagerAdapter = PagerFragmentStateAdapter(requireActivity())
-        pagerAdapter.addFragment(CommonHoldingFragment())
-        pagerAdapter.addFragment(MainInterestFragment())
+        pagerAdapter.addFragment(CommonHoldingFragment(containSocket))
+        pagerAdapter.addFragment(MainInterestFragment(intSocket))
         viewPager.adapter = pagerAdapter
         viewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
             override fun onPageSelected(position: Int){
-
                 super.onPageSelected(position)
-//                Log.e("ViewPagerFragment", "Page ${position+1}")
             }
         })
         // tablayout attach
@@ -90,7 +96,9 @@ class MainStockFragment : Fragment() {
         /* 라이프사이클 마지막: 뷰 파괴될 때 */
         super.onDestroyView()
         _binding = null
-        mSocket.disconnect()
+        statSocket.disconnect()
+        intSocket.disconnect()
+        containSocket.disconnect()
     }
 
 

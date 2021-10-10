@@ -34,9 +34,11 @@ class WalletFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private lateinit var viewPager: ViewPager2
     private lateinit var tabLayout: TabLayout
-    private lateinit var mSocket: Socket
-    private var _binding: FragmentWalletBinding? = null
 
+    private lateinit var statSocket: Socket
+    private lateinit var containSocket: Socket
+
+    private var _binding: FragmentWalletBinding? = null
     private val binding get() = _binding!!
 
     var data: CommonStatusData?= null
@@ -51,10 +53,11 @@ class WalletFragment : Fragment() {
     ): View? {
 
         // * socket 연결
-        mSocket = SocketApplication.get("common/status", "token=1")
-        mSocket.connect()
+        statSocket = SocketApplication.get("common/status", "token=1")
+        containSocket = SocketApplication.get("common/containStocks", "token=1")
+        statSocket.connect()
 
-        mSocket.on("reply_json", onMessageJson)
+        statSocket.on("reply_json", onMessageJson)
 
         // * rest api로 초기 화면 진입 시 데이터 받아 오기
         loadData()
@@ -67,7 +70,7 @@ class WalletFragment : Fragment() {
         viewPager = binding.pagerWalletStocklist
 
         val pagerAdapter = PagerFragmentStateAdapter(requireActivity())
-        pagerAdapter.addFragment(CommonHoldingFragment())
+        pagerAdapter.addFragment(CommonHoldingFragment(containSocket))
         pagerAdapter.addFragment(WalletTransactionFragment())
         viewPager.adapter = pagerAdapter
         viewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
@@ -93,7 +96,8 @@ class WalletFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
-        mSocket.disconnect()
+        statSocket.disconnect()
+        containSocket.disconnect()
     }
 
     var onMessageJson = Emitter.Listener {

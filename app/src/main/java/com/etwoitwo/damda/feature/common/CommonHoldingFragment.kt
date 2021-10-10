@@ -26,11 +26,10 @@ import retrofit2.Callback
 import retrofit2.Response
 
 
-class CommonHoldingFragment : Fragment() {
+class CommonHoldingFragment(var containSocket: Socket) : Fragment() {
     // TODO common 패키지로 옮기기
 
     var data: StockData?= null
-    private lateinit var mSocket: Socket
 //    private lateinit var isDataLengthZero: Boolean
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -43,17 +42,15 @@ class CommonHoldingFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        mSocket = SocketApplication.get("main/containStocks", "token=1")
-        mSocket.connect()
+        containSocket.connect()
 
-        mSocket.on("reply_json", onMessageJson)
+        containSocket.on("reply_json", onMessageJson)
         loadData()
         return inflater.inflate(R.layout.fragment_stock_list, container, false)
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
-        mSocket.disconnect()
     }
 
     var onMessageJson = Emitter.Listener {
