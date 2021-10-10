@@ -1,12 +1,13 @@
 package com.etwoitwo.damda.feature.main
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -14,7 +15,6 @@ import com.etwoitwo.damda.R
 import com.etwoitwo.damda.feature.common.StockListAdapter
 import com.etwoitwo.damda.model.dataclass.StockData
 import com.etwoitwo.damda.model.network.RetrofitService
-import com.etwoitwo.damda.model.network.SocketApplication
 import io.socket.client.Socket
 import io.socket.emitter.Emitter
 import okhttp3.ResponseBody
@@ -25,12 +25,8 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class MainInterestFragment(var intSocket: Socket) : Fragment() {
+class MainInterestFragment(private var intSocket: Socket) : Fragment() {
     var data: StockData?= null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -50,6 +46,7 @@ class MainInterestFragment(var intSocket: Socket) : Fragment() {
     }
 
 
+    @SuppressLint("NotifyDataSetChanged")
     private fun setAdapter(stockList: ArrayList<StockData.Data>){
         val stockListAdapter = StockListAdapter(stockList)
         val rvStock = requireView().findViewById<RecyclerView>(R.id.rcview_stocklist)
@@ -59,22 +56,22 @@ class MainInterestFragment(var intSocket: Socket) : Fragment() {
     }
 
 
-    var onMessageJson = Emitter.Listener {
+    private var onMessageJson = Emitter.Listener {
         // 서버애서 json 형식으로 보내는 경우
         try {
             val jsonObj: JSONObject = it[0] as JSONObject
-            val jsonarray_data: JSONArray = jsonObj.getJSONArray("data")
-            Log.d("main interest socket", jsonarray_data.toString())
+            val jsonarrayData: JSONArray = jsonObj.getJSONArray("data")
+            Log.d("main interest socket", jsonarrayData.toString())
             // json array 형식 -> StockData.Data array 형식으로 변환해주기
 
-            activity?.runOnUiThread(Runnable {
+            activity?.runOnUiThread {
                 // 에러 해결: Only the original thread that created a view hierarchy can touch its views.
                 kotlin.run {
 
-                    var dataset = arrayListOf<StockData.Data>()
-                    for (i in 0 until jsonarray_data.length()){
+                    val dataset = arrayListOf<StockData.Data>()
+                    for (i in 0 until jsonarrayData.length()) {
 
-                        val tempJson: JSONObject = jsonarray_data.getJSONObject(i)
+                        val tempJson: JSONObject = jsonarrayData.getJSONObject(i)
                         val tempData: StockData.Data = StockData.Data(
                             marketType = tempJson.getString("marketType"),
                             stockId = tempJson.getString("stockId"),
@@ -86,7 +83,7 @@ class MainInterestFragment(var intSocket: Socket) : Fragment() {
                         dataset.add(tempData)
                     }
 
-                    if (dataset.size > 0){
+                    if (dataset.size > 0) {
                         Log.d("socket main interest", "dataset.size > 0")
                         setAdapter(dataset)
                     } else {
@@ -95,7 +92,7 @@ class MainInterestFragment(var intSocket: Socket) : Fragment() {
                         replaceToEmptyFragment()
                     }
                 }
-            })
+            }
 
         } catch (e: JSONException){
             e.printStackTrace()

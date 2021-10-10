@@ -2,18 +2,14 @@ package com.etwoitwo.damda.feature.wallet
 
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
-import android.widget.Spinner
+import androidx.fragment.app.Fragment
 import com.etwoitwo.damda.R
-import com.etwoitwo.damda.databinding.FragmentMainStockBinding
-import com.etwoitwo.damda.databinding.FragmentWalletBinding
 import com.etwoitwo.damda.databinding.FragmentWalletTransactionBinding
-import java.text.DateFormatSymbols
 
 /* [설계]
 
@@ -29,14 +25,11 @@ import java.text.DateFormatSymbols
 class WalletTransactionFragment : Fragment() {
     private var _binding: FragmentWalletTransactionBinding? = null
     private val binding get() = _binding!!
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         //* 뷰 바인딩
         _binding = FragmentWalletTransactionBinding.inflate(inflater, container, false)
 

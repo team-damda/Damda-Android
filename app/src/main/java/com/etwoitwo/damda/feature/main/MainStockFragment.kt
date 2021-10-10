@@ -41,14 +41,10 @@ class MainStockFragment : Fragment() {
 
     var data: CommonStatusData?= null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         /* 라이프사이클 가장 첫번째로 실행됨 */
         // * socket 연결
         statSocket = SocketApplication.get("common/status", "token=1")
@@ -75,9 +71,6 @@ class MainStockFragment : Fragment() {
         pagerAdapter.addFragment(MainInterestFragment(intSocket))
         viewPager.adapter = pagerAdapter
         viewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
-            override fun onPageSelected(position: Int){
-                super.onPageSelected(position)
-            }
         })
         // tablayout attach
         TabLayoutMediator(tabLayout, viewPager){ tab, position ->
@@ -102,25 +95,27 @@ class MainStockFragment : Fragment() {
     }
 
 
-    var onMessageJson = Emitter.Listener {
+    private var onMessageJson = Emitter.Listener {
         /* [소켓] 전송 받는 이벤트 리스너(서버 -> 안드) */
         try {
             val jsonObj: JSONObject = it[0] as JSONObject
             val data: JSONObject = jsonObj.getJSONObject("data")
             Log.d("on socket11 nickname", data.getString("nickname"))
-            activity?.runOnUiThread(Runnable {
+            activity?.runOnUiThread {
                 // 에러 해결: Only the original thread that created a view hierarchy can touch its views.
                 kotlin.run {
                     binding.txtviewMainNickname.text = data.getString("nickname")
                     val tDecUp = DecimalFormat("#,###")
-                    val totAssetMoney = data.getString("deposit").toInt() + data.getString("containStockAsset").toInt()
+                    val totAssetMoney =
+                        data.getString("deposit").toInt() + data.getString("containStockAsset")
+                            .toInt()
                     val totAssetMoneyString = tDecUp.format(totAssetMoney) + "원"
                     binding.txtviewMainTotassetmoney.text = totAssetMoneyString
                     val history = data.getString("history")
                     val historyString = "주식초보 $history 일차"
                     binding.txtviewMainMystatus.text = historyString
                 }
-            })
+            }
         } catch (e: JSONException){
             e.printStackTrace()
         }

@@ -12,7 +12,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.etwoitwo.damda.R
 import com.etwoitwo.damda.model.dataclass.StockData
 import java.text.DecimalFormat
-import kotlin.reflect.typeOf
 
 class StockListAdapter(private var list: MutableList<StockData.Data>): RecyclerView.Adapter<StockListAdapter.ViewHolder>() {
 
@@ -28,9 +27,7 @@ class StockListAdapter(private var list: MutableList<StockData.Data>): RecyclerV
     override fun getItemCount(): Int {
         // 언제? 이 메서드를 사용해 항목을 추가로 표시할 수 없는 상황을 확인할 때 유용
         // 역할? 데이터 세트 크기 가져옴
-        var size: Int = 0
-        size = list.count()
-        return size
+        return list.count()
     }
 
     // ViewHolder의 bind 메소드를 호출한다.
@@ -50,22 +47,30 @@ class StockListAdapter(private var list: MutableList<StockData.Data>): RecyclerV
         private val stockTotPrice: TextView = itemView.findViewById(R.id.txtview_main_stocktotprice)
         private val stockPercent: TextView = itemView.findViewById(R.id.txtview_main_stockpercent)
 
-        fun getColorInt(context:Context, value:Int): Int {
-            return if (value > 0){
-                ContextCompat.getColor(context, R.color.pastel_red)
-            } else if(value <0){
-                ContextCompat.getColor(context, R.color.dark_sky_blue)
-            } else {
-                ContextCompat.getColor(context, R.color.black)
+        private fun getColorInt(context:Context, value:Int): Int {
+            return when {
+                value > 0 -> {
+                    ContextCompat.getColor(context, R.color.pastel_red)
+                }
+                value <0 -> {
+                    ContextCompat.getColor(context, R.color.dark_sky_blue)
+                }
+                else -> {
+                    ContextCompat.getColor(context, R.color.black)
+                }
             }
         }
-        fun getColorDouble(context: Context, value:Double): Int {
-            return if (value > 0){
-                ContextCompat.getColor(context, R.color.pastel_red)
-            } else if(value <0){
-                ContextCompat.getColor(context, R.color.dark_sky_blue)
-            } else {
-                ContextCompat.getColor(context, R.color.black)
+        private fun getColorDouble(context: Context, value:Double): Int {
+            return when {
+                value > 0 -> {
+                    ContextCompat.getColor(context, R.color.pastel_red)
+                }
+                value <0 -> {
+                    ContextCompat.getColor(context, R.color.dark_sky_blue)
+                }
+                else -> {
+                    ContextCompat.getColor(context, R.color.black)
+                }
             }
         }
 
@@ -73,7 +78,7 @@ class StockListAdapter(private var list: MutableList<StockData.Data>): RecyclerV
         @SuppressLint("SetTextI18n")
         fun bind(item: StockData.Data){
             Log.d("ListAdapter", "===== ===== ===== ===== bind ===== ===== ===== =====")
-            Log.d("ListAdapter", item.stockId.toString()+" "+item.stockName)
+            Log.d("ListAdapter", item.stockId +" "+item.stockName)
 
             /* 공통 영역 */
             marketType.text = item.marketType

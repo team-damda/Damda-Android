@@ -8,12 +8,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.viewpager2.widget.ViewPager2
-import com.etwoitwo.damda.R
-import com.etwoitwo.damda.databinding.FragmentMainStockBinding
 import com.etwoitwo.damda.databinding.FragmentWalletBinding
 import com.etwoitwo.damda.feature.common.CommonHoldingFragment
 import com.etwoitwo.damda.feature.common.PagerFragmentStateAdapter
-import com.etwoitwo.damda.feature.main.MainInterestFragment
 import com.etwoitwo.damda.model.dataclass.CommonStatusData
 import com.etwoitwo.damda.model.network.RetrofitService
 import com.etwoitwo.damda.model.network.SocketApplication
@@ -43,14 +40,10 @@ class WalletFragment : Fragment() {
 
     var data: CommonStatusData?= null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
         // * socket 연결
         statSocket = SocketApplication.get("common/status", "token=1")
@@ -74,9 +67,6 @@ class WalletFragment : Fragment() {
         pagerAdapter.addFragment(WalletTransactionFragment())
         viewPager.adapter = pagerAdapter
         viewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
-            override fun onPageSelected(position: Int){
-                super.onPageSelected(position)
-            }
         })
 
         // tablayout attach
@@ -100,13 +90,13 @@ class WalletFragment : Fragment() {
         containSocket.disconnect()
     }
 
-    var onMessageJson = Emitter.Listener {
+    private var onMessageJson = Emitter.Listener {
         // 서버애서 json 형식으로 보내는 경우
         try {
             val jsonObj: JSONObject = it[0] as JSONObject
             val data: JSONObject = jsonObj.getJSONObject("data")
             Log.d("on socket11 nickname", data.getString("nickname"))
-            activity?.runOnUiThread(Runnable {
+            activity?.runOnUiThread {
                 // 에러 해결: Only the original thread that created a view hierarchy can touch its views.
                 kotlin.run {
                     // 주식 금액 업데이트
@@ -125,7 +115,7 @@ class WalletFragment : Fragment() {
                     val totAssetMoneyString = tDecUp.format(totAssetMoney) + "원"
                     binding.txtviewWalletTotassetmoney.text = totAssetMoneyString
                 }
-            })
+            }
 
 
         } catch (e: JSONException){
