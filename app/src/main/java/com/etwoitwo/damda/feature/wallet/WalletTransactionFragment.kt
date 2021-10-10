@@ -1,60 +1,67 @@
 package com.etwoitwo.damda.feature.wallet
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
+import android.widget.Spinner
 import com.etwoitwo.damda.R
+import com.etwoitwo.damda.databinding.FragmentMainStockBinding
+import com.etwoitwo.damda.databinding.FragmentWalletBinding
+import com.etwoitwo.damda.databinding.FragmentWalletTransactionBinding
+import java.text.DateFormatSymbols
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+/* [설계]
 
-/**
- * A simple [Fragment] subclass.
- * Use the [WalletTransactionFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
+<wallet/transactions>
+거래내역이 있던 월 리스트로 서버에서 보내 주기
+받은 거래-월 데이터 monthSpinnerArray 에 집어넣기 (StringArray임)
+
+받은 거래 내역 리스트에서 버튼을 클릭하면 매수/매도 클릭하여 보여줌.
+이때 child fragment 교체해주기(데이터 있으면 -> wallet_transaction_list로, 데이터 없으면 -> wallet_transaction_none으로)
+
+*/
+
 class WalletTransactionFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-
+    private var _binding: FragmentWalletTransactionBinding? = null
+    private val binding get() = _binding!!
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_wallet_transaction, container, false)
+        //* 뷰 바인딩
+        _binding = FragmentWalletTransactionBinding.inflate(inflater, container, false)
+
+        //* spinner 설정하기
+        val spinner = binding.spinnerWalletFilter
+        val monthSpinnerArray:Array<String> = arrayOf("21/5월", "20/11월")
+        val adapter = ArrayAdapter(requireContext(), R.layout.layout_wallet_spinneritem, monthSpinnerArray)
+        spinner.adapter = adapter
+        spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+
+            }
+            override fun onItemSelected(
+                parent: AdapterView<*>?,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
+                Log.d("spinner11 onItemClicked", "${spinner.getItemAtPosition(position)}")
+            }
+
+        }
+
+        return binding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment WalletTransactionFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            WalletTransactionFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
-    }
+
 }
