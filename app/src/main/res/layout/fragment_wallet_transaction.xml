@@ -19,6 +19,7 @@
         android:paddingVertical="8dp"
         >
         <RadioGroup
+            android:id="@+id/btn_wallet_radiogroup"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
