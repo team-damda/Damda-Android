@@ -104,13 +104,13 @@ class MainInterestFragment(private var intSocket: Socket) : Fragment() {
         val fragmentManager = childFragmentManager
         val fragTransaction:FragmentTransaction = fragmentManager.beginTransaction()
 
-        fragTransaction.add(R.id.layout_stocklist_wrapper, MainInterestNoneFragment())
+        fragTransaction.replace(R.id.layout_stocklist_wrapper, MainInterestNoneFragment())
         fragTransaction.commit()
     }
 
     private fun loadData(){
         // call back 등록해서 통신 요청
-        val userid = 1
+        val userid = 2
         // TODO 로그인 이미 했을 시 해당 토큰으로 보내기
         val call: Call<StockData> = RetrofitService.service_ct_tab.requestMainInterest(UserId=userid)
 //        val call: Call<StockData> = RetrofitService.service_ct_tab.requestMainInterest()
