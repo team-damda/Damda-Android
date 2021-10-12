@@ -71,6 +71,7 @@
     <string name="main_stockpercent">+50.00%</string>
     <string name="app_noneinterest">관심종목이 없어요</string>
     <string name="app_noneinterestadvice">검색탭을 통해 관심있는 주식을 담아봐요</string>
+    <string name="main_character">캐릭터</string>
 
 
     <!-- Calendar string -->
