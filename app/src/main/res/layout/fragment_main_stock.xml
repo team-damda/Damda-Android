@@ -74,20 +74,22 @@
                 app:layout_constraintStart_toStartOf="@+id/txtview_main_totasset"
                 app:layout_constraintTop_toBottomOf="@+id/txtview_main_totasset" />
 
-            <View
+            <ImageView
                 android:id="@+id/view_main_characterwrapper"
                 android:layout_width="144dp"
                 android:layout_height="144dp"
                 android:padding="24dp"
                 android:background="@drawable/bg_oval"
                 android:backgroundTint="@color/white"
+                android:contentDescription="@string/main_character"
+                android:src="@drawable/img_character_zero"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/txtview_main_totassetmoney"
                 android:layout_marginStart="8dp"
                 >
                 <!-- ImgView 들어갈 자리-->
-            </View>
+            </ImageView>
 
             <ImageButton
                 android:id="@+id/imgbtn_main_gocalendar"
