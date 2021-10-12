@@ -1,5 +1,6 @@
 package com.etwoitwo.damda.feature.wallet
 
+import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -7,13 +8,22 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.viewpager2.widget.ViewPager2
+import com.etwoitwo.damda.R
 import com.etwoitwo.damda.databinding.FragmentWalletBinding
 import com.etwoitwo.damda.feature.common.CommonHoldingFragment
 import com.etwoitwo.damda.feature.common.PagerFragmentStateAdapter
 import com.etwoitwo.damda.model.dataclass.CommonStatusData
 import com.etwoitwo.damda.model.network.RetrofitService
 import com.etwoitwo.damda.model.network.SocketApplication
+import com.github.mikephil.charting.animation.Easing
+import com.github.mikephil.charting.charts.PieChart
+import com.github.mikephil.charting.components.Description
+import com.github.mikephil.charting.data.PieData
+import com.github.mikephil.charting.data.PieDataSet
+import com.github.mikephil.charting.data.PieEntry
+import com.github.mikephil.charting.utils.ColorTemplate
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import io.socket.client.Socket
@@ -39,6 +49,7 @@ class WalletFragment : Fragment() {
     private val binding get() = _binding!!
 
     var data: CommonStatusData?= null
+    private lateinit var pieChart: PieChart
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -79,6 +90,10 @@ class WalletFragment : Fragment() {
             tab.text = tabName
         }.attach()
 
+        //* 파이차트
+        pieChart = binding.piechartWallet
+        initPieChart()
+
         return binding.root
     }
 
@@ -88,6 +103,53 @@ class WalletFragment : Fragment() {
         _binding = null
         statSocket.disconnect()
         containSocket.disconnect()
+    }
+
+    private fun initPieChart(){
+        pieChart.setUsePercentValues(true)
+        pieChart.description.isEnabled = false
+
+        pieChart.isDrawHoleEnabled = false
+        pieChart.setHoleColor(Color.WHITE)
+        pieChart.transparentCircleRadius = 61F
+        pieChart.centerText = ""
+        pieChart.setDrawEntryLabels(false)
+        pieChart.setDrawCenterText(false)
+        pieChart.legend.isEnabled = false
+        pieChart.animateY(1000, Easing.EaseInOutCubic)
+
+
+        var yValues = ArrayList<PieEntry>()
+        yValues.add(PieEntry(10F, "주식"))
+//        data?.data?.containStockAsset?.let { PieEntry(it.toFloat(), "주식") }?.let { yValues.add(it) }
+//        data?.data?.deposit?.let { PieEntry(it.toFloat(), "예수금") }?.let { yValues.add(it) }
+//
+        var dataSet = PieDataSet(yValues, "WalletStatus")
+        dataSet.selectionShift = 5f
+        dataSet.colors = listOf(context?.let { ContextCompat.getColor(it, R.color.dusty_orange) },
+            context?.let { ContextCompat.getColor(it, R.color.grey_300) })
+
+
+        var pdata = PieData((dataSet))
+        pdata.setDrawValues(false)
+
+        pieChart.data = pdata
+    }
+
+    private fun updatePieChart(containStockAsset: Int, deposit: Int){
+        var yValues = ArrayList<PieEntry>()
+        PieEntry(containStockAsset.toFloat(), "주식").let { yValues.add(it) }
+        PieEntry(deposit.toFloat(), "예수금").let { yValues.add(it) }
+
+        var dataSet = PieDataSet(yValues, "WalletStatus")
+        dataSet.selectionShift = 5f
+        dataSet.colors = listOf(context?.let { ContextCompat.getColor(it, R.color.dusty_orange) },
+            context?.let { ContextCompat.getColor(it, R.color.grey_300) })
+
+        var pdata = PieData((dataSet))
+        pdata.setDrawValues(false)
+
+        pieChart.data = pdata
     }
 
     private var onMessageJson = Emitter.Listener {
@@ -114,6 +176,9 @@ class WalletFragment : Fragment() {
                     val totAssetMoney = stockAssetMoney + depositMoney
                     val totAssetMoneyString = tDecUp.format(totAssetMoney) + "원"
                     binding.txtviewWalletTotassetmoney.text = totAssetMoneyString
+
+                    // 파이 차트 업데이트
+                    updatePieChart(stockAssetMoney, depositMoney)
                 }
             }
 
@@ -159,6 +224,9 @@ class WalletFragment : Fragment() {
                             val totAssetMoney = stockAssetMoney + depositMoney
                             val totAssetMoneyString = tDecUp.format(totAssetMoney) + "원"
                             binding.txtviewWalletTotassetmoney.text = totAssetMoneyString
+
+                            // 파이 차트 업데이트
+                            updatePieChart(stockAssetMoney, depositMoney)
                         }
                     }?: showError(response.errorBody())
 
