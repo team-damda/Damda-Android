@@ -6,15 +6,16 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.*
-import androidx.core.content.ContextCompat
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
+import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentTransaction
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.etwoitwo.damda.R
 import com.etwoitwo.damda.databinding.FragmentWalletTransactionBinding
 import com.etwoitwo.damda.feature.common.StockListAdapter
-import com.etwoitwo.damda.model.dataclass.CommonStatusData
 import com.etwoitwo.damda.model.dataclass.StockData
 import com.etwoitwo.damda.model.network.RetrofitService
 import okhttp3.ResponseBody
@@ -22,7 +23,6 @@ import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.text.DecimalFormat
 
 
 class WalletTransactionFragment : Fragment() {
@@ -86,7 +86,6 @@ class WalletTransactionFragment : Fragment() {
 
         //* [REST] wallet/transactions
         loadData()
-
         return binding.root
     }
 
@@ -99,6 +98,15 @@ class WalletTransactionFragment : Fragment() {
         stockListAdapter.notifyDataSetChanged()
     }
 
+    private fun replaceToEmptyFragment(){
+        // TODO add기 때문에 기존 뷰가 그대로 보인다는 문제점 해결하기
+        val fragmentManager = childFragmentManager
+        val fragTransaction: FragmentTransaction = fragmentManager.beginTransaction()
+
+        fragTransaction.replace(R.id.frame_wallet_transaction_content, WalletTransactionNoneFragment())
+        fragTransaction.commit()
+    }
+
     private fun loadData(){
         // call back 등록해서 통신 요청
         val userid = 1
@@ -108,6 +116,7 @@ class WalletTransactionFragment : Fragment() {
         call.enqueue(object : Callback<StockData> {
             override fun onFailure(call: Call<StockData>, t: Throwable) {
                 Log.d("wallet loadData11 error", "from load data transactions")
+                replaceToEmptyFragment()
             }
 
             override fun onResponse(call: Call<StockData>, response: Response<StockData>) {
@@ -119,7 +128,11 @@ class WalletTransactionFragment : Fragment() {
                         data = response.body()
 //                        Log.d("wallet loadData11", data.toString())
                         data?.data?.let { it1 ->
-                            setAdapter(it1)
+                            if (it1.size > 0){
+                                setAdapter(it1)
+                            } else {
+                                replaceToEmptyFragment()
+                            }
                         }
                     }?: showError(response.errorBody())
             }
@@ -130,5 +143,6 @@ class WalletTransactionFragment : Fragment() {
         val ob = JSONObject(e.string())
         Toast.makeText(context, "네트워크 에러", Toast.LENGTH_SHORT).show()
         Log.d("wallet loadData11 error", "$ob")
+        replaceToEmptyFragment()
     }
 }
