@@ -57,7 +57,6 @@ class WalletTransactionFragment : Fragment() {
         }
 
         //* 라디오 버튼에 onclicklistener 설정해서 골라진 것 저장하기
-        /* TODO 클릭되자마자 저장된 데이터 배열에서 필터링해서 화면에 보여주기 */
         binding.btnWalletRadiogroup.setOnCheckedChangeListener { _, checkedId ->
             when (checkedId) {
                 R.id.btn_wallet_filterall -> {
@@ -123,7 +122,6 @@ class WalletTransactionFragment : Fragment() {
                             setAdapter(it1)
                         }
                     }?: showError(response.errorBody())
-
             }
         })
     }
