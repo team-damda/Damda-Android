@@ -83,6 +83,7 @@
     <string name="wallet_transcontent">체결가 30,000원(1950주)</string>
     <string name="wallet_transtime">12:31</string>
     <string name="wallet_transday">21/5/6(수)</string>
+    <string name="wallet_transtype">매수</string>
     <string name="wallet_vallos">평가손익</string>
     <string name="wallet_vallossmoney">+5,000원</string>
     <string name="wallet_mystockasset">주식</string>
