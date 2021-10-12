@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".WalletTransactionFragment"
+    tools:context=".feature.wallet.WalletTransactionFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     >
@@ -18,63 +18,62 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:paddingVertical="8dp"
         >
-        <Button
-            android:id="@+id/btn_wallet_filterall"
-            style="@style/Medium"
+        <RadioGroup
             android:layout_width="0dp"
-            android:layout_height="28dp"
-            android:layout_marginStart="16dp"
-            android:padding="0dp"
-            android:minHeight="0dp"
-            android:minWidth="0dp"
-            android:background="@drawable/bg_wallet_button"
-            app:backgroundTint="@null"
-            android:text="@string/wallet_filterall"
-            android:textColor="@color/black"
-            android:textSize="12sp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent">
+        <RadioButton
+            android:checked="true"
+            android:id="@+id/btn_wallet_filterall"
+            android:layout_width="wrap_content"
+            android:layout_height="28dp"
+            android:background="@drawable/bg_wallet_radiobutton"
+            android:button="@null"
+            android:text="@string/wallet_filterall"
+            android:textColor="@drawable/bg_wallet_radiotext"
+            android:textAlignment="center"
+            android:paddingVertical="0dp"
+            android:layout_marginStart="16dp"
+            style="@style/Medium"
             />
 
-        <Button
+        <RadioButton
+            android:checked="false"
             android:id="@+id/btn_wallet_filterbuy"
-            style="@style/Medium"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="28dp"
-            android:layout_marginStart="4dp"
-            android:padding="0dp"
-            android:minHeight="0dp"
-            android:minWidth="0dp"
-            android:background="@drawable/bg_wallet_button"
-            app:backgroundTint="@null"
+            android:background="@drawable/bg_wallet_radiobutton"
+            android:button="@null"
             android:text="@string/wallet_filterbuy"
-            android:textColor="@color/black"
-            android:textSize="12sp"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/btn_wallet_filterall"
-            />
-        <Button
-            android:id="@+id/btn_wallet_filtersell"
-            style="@style/Medium"
-            android:layout_width="0dp"
-            android:layout_height="28dp"
+            android:textColor="@drawable/bg_wallet_radiotext"
+            android:textAlignment="center"
+            android:paddingVertical="0dp"
             android:layout_marginStart="4dp"
-            android:padding="0dp"
-            android:minHeight="0dp"
-            android:minWidth="0dp"
-            android:background="@drawable/bg_wallet_button"
-            app:backgroundTint="@null"
-            android:text="@string/wallet_filtersell"
-            android:textColor="@color/black"
-            android:textSize="12sp"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/btn_wallet_filterbuy"
+            style="@style/Medium"
             />
+        <RadioButton
+            android:checked="false"
+            android:id="@+id/btn_wallet_filtersell"
+            android:layout_width="wrap_content"
+            android:layout_height="28dp"
+            android:background="@drawable/bg_wallet_radiobutton"
+            android:button="@null"
+            android:text="@string/wallet_filtersell"
+            android:textColor="@drawable/bg_wallet_radiotext"
+            android:textAlignment="center"
+            android:paddingVertical="0dp"
+            android:layout_marginStart="4dp"
+            style="@style/Medium"
+            />
+        </RadioGroup>
         <Spinner
             android:id="@+id/spinner_wallet_filter"
             android:layout_width="88dp"
             android:layout_height="wrap_content"
-            android:background="@drawable/bg_round_border_4dp"
+            android:background="@drawable/bg_wallet_spinner"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -83,5 +82,14 @@
             />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-    <!-- 프래그먼트? 들어갈 자리? -->
+
+    <FrameLayout
+        android:id="@+id/frame_wallet_transaction_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintTop_toBottomOf="@+id/layout_wallet_transactionfilter"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        />
 </androidx.constraintlayout.widget.ConstraintLayout>

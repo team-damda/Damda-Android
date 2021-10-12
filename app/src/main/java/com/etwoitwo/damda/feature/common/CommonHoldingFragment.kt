@@ -1,4 +1,4 @@
-package com.etwoitwo.damda.feature.main
+package com.etwoitwo.damda.feature.common
 
 import android.annotation.SuppressLint
 import android.os.Bundle
@@ -12,7 +12,6 @@ import androidx.fragment.app.FragmentTransaction
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.etwoitwo.damda.R
-import com.etwoitwo.damda.feature.common.StockListAdapter
 import com.etwoitwo.damda.model.dataclass.StockData
 import com.etwoitwo.damda.model.network.RetrofitService
 import io.socket.client.Socket
@@ -25,43 +24,31 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class MainInterestFragment(private var intSocket: Socket) : Fragment() {
+
+class CommonHoldingFragment(private var containSocket: Socket) : Fragment() {
+    // TODO common 패키지로 옮기기
+
     var data: StockData?= null
+//    private lateinit var isDataLengthZero: Boolean
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        intSocket.connect()
-        intSocket.on("reply_json", onMessageJson)
+        containSocket.connect()
+
+        containSocket.on("reply_json", onMessageJson)
         loadData()
         return inflater.inflate(R.layout.fragment_stock_list, container, false)
     }
-
-
-    override fun onDestroyView() {
-        Log.d("destroy view", "main interest")
-        super.onDestroyView()
-    }
-
-
-    @SuppressLint("NotifyDataSetChanged")
-    private fun setAdapter(stockList: ArrayList<StockData.Data>){
-        val stockListAdapter = StockListAdapter(stockList)
-        val rvStock = requireView().findViewById<RecyclerView>(R.id.rcview_stocklist)
-        rvStock.layoutManager = LinearLayoutManager(activity, RecyclerView.VERTICAL, false)
-        rvStock.adapter = stockListAdapter
-        stockListAdapter.notifyDataSetChanged()
-    }
-
 
     private var onMessageJson = Emitter.Listener {
         // 서버애서 json 형식으로 보내는 경우
         try {
             val jsonObj: JSONObject = it[0] as JSONObject
             val jsonarrayData: JSONArray = jsonObj.getJSONArray("data")
-            Log.d("main interest socket", jsonarrayData.toString())
+            Log.d("common holding socket", jsonarrayData.toString())
             // json array 형식 -> StockData.Data array 형식으로 변환해주기
 
             activity?.runOnUiThread {
@@ -77,8 +64,9 @@ class MainInterestFragment(private var intSocket: Socket) : Fragment() {
                             stockId = tempJson.getString("stockId"),
                             stockName = tempJson.getString("stockName"),
                             currentPrice = tempJson.getInt("currentPrice"),
-                            todayChange = tempJson.getInt("todayChange"),
-                            todayRoC = tempJson.getDouble("todayRoC"),
+                            totCnt = tempJson.getInt("totCnt"),
+                            totProfitLoss = tempJson.getInt("totProfitLoss"),
+                            totProfitLossRate = tempJson.getDouble("totProfitLossRate"),
                         )
                         dataset.add(tempData)
                     }
@@ -99,12 +87,21 @@ class MainInterestFragment(private var intSocket: Socket) : Fragment() {
         }
     }
 
+
+    @SuppressLint("NotifyDataSetChanged")
+    private fun setAdapter(stockList: ArrayList<StockData.Data>){
+        val stockListAdapter = StockListAdapter(stockList)
+        val rvStock = requireView().findViewById<RecyclerView>(R.id.rcview_stocklist)
+        rvStock.layoutManager = LinearLayoutManager(activity, RecyclerView.VERTICAL, false)
+        rvStock.adapter = stockListAdapter
+        stockListAdapter.notifyDataSetChanged()
+    }
+
     private fun replaceToEmptyFragment(){
         // TODO add기 때문에 기존 뷰가 그대로 보인다는 문제점 해결하기
         val fragmentManager = childFragmentManager
-        val fragTransaction:FragmentTransaction = fragmentManager.beginTransaction()
-
-        fragTransaction.add(R.id.layout_stocklist_wrapper, MainInterestNoneFragment())
+        val fragTransaction: FragmentTransaction = fragmentManager.beginTransaction()
+        fragTransaction.add(R.id.layout_stocklist_wrapper, CommonHoldingNoneFragment())
         fragTransaction.commit()
     }
 
@@ -112,25 +109,28 @@ class MainInterestFragment(private var intSocket: Socket) : Fragment() {
         // call back 등록해서 통신 요청
         val userid = 1
         // TODO 로그인 이미 했을 시 해당 토큰으로 보내기
-        val call: Call<StockData> = RetrofitService.service_ct_tab.requestMainInterest(UserId=userid)
-//        val call: Call<StockData> = RetrofitService.service_ct_tab.requestMainInterest()
+        val call: Call<StockData> = RetrofitService.service_ct_tab.requestCommonHolding(UserId=userid)
+//        val call: Call<StockData> = RetrofitService.service_ct_tab.requestCommonHolding()
 
         call.enqueue(object : Callback<StockData> {
             override fun onFailure(call: Call<StockData>, t: Throwable) {
-                Log.d("main interest - ", "loadData11 error")
+                Log.d("common holding - ", "loadData11 error")
                 Toast.makeText(context, "네트워크 에러", Toast.LENGTH_SHORT).show()
                 replaceToEmptyFragment()
             }
 
             override fun onResponse(call: Call<StockData>, response: Response<StockData>) {
-                Log.d("main interest ", "- loadData11 response")
+                Log.d("common holding ", "- loadData11 response")
 
                 response.takeIf { it.isSuccessful }
                     ?.body()
                     ?.let { _ ->
+                        Log.d("common holding", "여기 1")
                         data = response.body()
+                        Log.d("common holding", "여기 2")
                         Log.d("loadData11 responsedata", data?.data.toString())
                         data?.data?.let { it1 ->
+                            Log.d("common holding", "여기 3")
                             if (it1.size > 0){
                                 setAdapter(it1)
                             } else {
@@ -147,7 +147,7 @@ class MainInterestFragment(private var intSocket: Socket) : Fragment() {
         val e = error ?: return
         val ob = JSONObject(e.string())
         Toast.makeText(context, "네트워크 에러", Toast.LENGTH_SHORT).show()
-        Log.d("main interest ", "$ob")
+        Log.d("common holding ", "$ob")
         replaceToEmptyFragment()
     }
 }
