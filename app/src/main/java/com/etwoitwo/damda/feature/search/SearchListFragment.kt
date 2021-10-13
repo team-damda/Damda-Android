@@ -6,6 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.etwoitwo.damda.R
+import com.etwoitwo.damda.databinding.FragmentSearchListBinding
+import com.etwoitwo.damda.model.dataclass.Search
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -18,6 +20,10 @@ private const val ARG_PARAM2 = "param2"
  * create an instance of this fragment.
  */
 class SearchListFragment : Fragment() {
+    private var _binding: FragmentSearchListBinding? = null
+    private val binding get() = _binding!!
+
+
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -33,9 +39,19 @@ class SearchListFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_search_list, container, false)
+        _binding = FragmentSearchListBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        val adapter = SearchListAdapter()
+        adapter.items.add(Search("코스닥", "000000", "삼성 전자", 12000))
+        adapter.items.add(Search("코스닥", "111111", "삼성 전자", 100000))
+        adapter.items.add(Search("코스닥", "222222", "카카오 증권", 100))
+        binding.recyclerViewSearch.adapter = adapter
     }
 
     companion object {
