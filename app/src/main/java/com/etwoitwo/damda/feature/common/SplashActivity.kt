@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import com.etwoitwo.damda.MainActivity
+import com.etwoitwo.damda.feature.onboarding.OnBoardingActivity
 
 /**
  * Author: soo5717
@@ -17,7 +18,7 @@ class SplashActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         Handler(Looper.getMainLooper()).postDelayed({
-            val intent = Intent(this, MainActivity::class.java)
+            val intent = Intent(this, OnBoardingActivity::class.java)
             startActivity(intent)
             finish()
         }, 1000)
