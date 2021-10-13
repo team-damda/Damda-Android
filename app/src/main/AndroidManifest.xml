@@ -16,14 +16,14 @@
         <activity android:name=".feature.sign.SignUpActivity" />
         <activity android:name=".MainActivity">
         </activity>
-        <activity android:name=".feature.graph.SellingActivity">
+        <activity android:name=".feature.graph.SellingActivity"/>
+        <activity android:name=".feature.graph.BuyingActivity" />
+        <activity android:name=".feature.graph.GraphActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <activity android:name=".feature.graph.BuyingActivity">
         </activity>
     </application>
 
