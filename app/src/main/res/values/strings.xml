@@ -139,9 +139,9 @@
     <string name="search_search_icon">검색 아이콘</string>
     <string name="search_empty_result">해당종목이 없어요</string>
     <string name="search_another_word">다른 키워드를 검색해주세요</string>
-    <string name="search_high_stock">비싼 주식 <br /> TOP 100</string>
-    <string name="search_low_stock">저렴한 주식<br /> TOP 100</string>
-    <string name="search_favorite_stock">많은 사람들이<br />관심 있어하는 주식</string>
+    <string name="search_high_stock">비싼 주식\nTOP 100</string>
+    <string name="search_low_stock">저렴한 주식\nTOP 100</string>
+    <string name="search_favorite_stock">많은 사람들이\n관심 있어하는 주식</string>
     <string name="search_coffee_stock">커피 한 잔</string>
     <string name="search_chicken_stock">치킨 한 마리</string>
     <string name="search_giftcard_stock">상품권 한장</string>
