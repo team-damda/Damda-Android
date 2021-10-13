@@ -5,6 +5,25 @@
     <string name="bottomnav_wallet">지갑</string>
     <string name="bottomnav_more">더보기</string>
 
+    <!-- On Boarding strign -->
+    <string name="onboarding1_1_1">메인페이지에서</string>
+    <string name="onboarding1_1_2">내 자산과 주식레벨을</string>
+    <string name="onboarding1_1_3">볼 수 있고</string>
+
+    <string name="onboarding1_2_1">검색페이지</string>
+    <string name="onboarding1_2_2">를 눌러</string>
+    <string name="onboarding1_2_3">원하는 주식을 찾으세요</string>
+
+    <string name="onboarding2_1_1">원하는 주식이</string>
+    <string name="onboarding2_1_2">현재 원하는 가격이라면</string>
+    <string name="onboarding2_1_3">매수</string>
+    <string name="onboarding2_1_3_2">를 눌러 원하는 만큼 사고</string>
+
+    <string name="onboarding2_2_1">샀던 가격보다 오르면</string>
+    <string name="onboarding2_2_2">매도</string>
+    <string name="onboarding2_2_2_2">를 눌러서 팔면</string>
+    <string name="onboarding2_2_3">차액을 벌 수 있어요</string>
+
     <!-- Graph, selling, buying string -->
     <string name="app_name">Damda</string>
     <string name="division">코스피</string>
