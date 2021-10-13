@@ -29,6 +29,18 @@
             app:layout_constraintBottom_toBottomOf="@+id/toolbar"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+
+        <ImageButton
+            android:id="@+id/button_search"
+            android:background="@null"
+            android:layout_gravity="end|center"
+            android:layout_marginEnd="16dp"
+            android:padding="8dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_find_24dp"
+            android:contentDescription="@string/bottomnav_search" />
     </androidx.appcompat.widget.Toolbar>
 
 
