@@ -21,7 +21,7 @@ class SellingActivity : AppCompatActivity() {
 
         var BinderRecentMoney = binding.textViewRecentMoney
         var BinderInputStock = binding.editTextInputStock
-        BinderRecentMoney.setText("1248")
+        BinderRecentMoney.setText("15000")
 
         var recentMoney : Int  = Integer.parseInt(BinderRecentMoney.text.toString())
         var totalMoney = 0
@@ -83,7 +83,11 @@ class SellingActivity : AppCompatActivity() {
             changeColor("#000000")
         }
         binding.buttonSelling.setOnClickListener{
-            // 매도하기: alert 으로 넘어간다.
+            binding.buttonSelling.setOnClickListener {
+                val dialog = SellingCustomDialog()
+                dialog.show(supportFragmentManager, "SellingCustomDialog")
+
+            }
         }
     }
 

@@ -11,18 +11,20 @@
 <!--        >-->
 
 
-        <TextView
-            android:id="@+id/text_view_recheck"
-            style="@style/Warm_grey_Medium"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="@string/recheck"
-            android:textSize="14sp"
-            app:layout_constraintBottom_toTopOf="@+id/text_view_stock_name"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:id="@+id/text_view_recheck"
+                style="@style/Warm_grey_Medium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="80dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="80dp"
+                android:text="@string/recheck"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toTopOf="@+id/text_view_stock_name"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/text_view_stock_name"
@@ -114,18 +116,18 @@
             app:layout_constraintStart_toEndOf="@+id/text_view_money_unit"
             app:layout_constraintTop_toBottomOf="@+id/text_view_stock_name" />
 
-        <TextView
-            android:id="@+id/text_view_result_money"
-            style="@style/Medium"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="@string/result_money"
-            android:textColor="@color/pastel_red"
-            android:textSize="14sp"
-            app:layout_constraintEnd_toStartOf="@+id/text_view_right_parentheses"
-            app:layout_constraintStart_toEndOf="@+id/text_view_left_parentheses"
-            app:layout_constraintTop_toBottomOf="@+id/text_view_stock_name" />
+            <TextView
+                android:id="@+id/text_view_result_money"
+                style="@style/Medium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/result_money"
+                android:textColor="@color/pastel_red"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toStartOf="@+id/text_view_right_parentheses"
+                app:layout_constraintStart_toEndOf="@+id/text_view_left_parentheses"
+                app:layout_constraintTop_toBottomOf="@+id/text_view_stock_name" />
 
         <TextView
             android:id="@+id/text_view_right_parentheses"
@@ -140,35 +142,40 @@
             app:layout_constraintStart_toEndOf="@+id/text_view_result_money"
             app:layout_constraintTop_toBottomOf="@+id/text_view_stock_name" />
 
-        <Button
-            android:id="@+id/button_cancel"
-            style="@style/White_Bold"
-            android:layout_width="0dp"
-            android:layout_height="48dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginBottom="16dp"
-            android:background="@drawable/bg_cancel_button"
-            android:text="@string/cancel"
-            android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:backgroundTint="@null"/>
+            <Button
+                android:id="@+id/button_cancel"
+                style="@style/White_Bold"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/bg_cancel_button"
+                android:text="@string/cancel"
+                android:textSize="20sp"
+                app:backgroundTint="@null"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/button_buying"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/text_view_result_money" />
 
-        <Button
-            android:id="@+id/button_buying"
-            style="@style/White_Bold"
-            android:layout_width="0dp"
-            android:layout_height="48dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="16dp"
-            android:background="@drawable/bg_buying_button"
-            android:text="@string/buying"
-            android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/button_cancel"
-            app:backgroundTint="@null"/>
+            <Button
+                android:id="@+id/button_buying"
+                style="@style/White_Bold"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/bg_buying_button"
+                android:text="@string/buying"
+                android:textSize="20sp"
+                app:backgroundTint="@null"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/button_cancel"
+                app:layout_constraintTop_toBottomOf="@+id/text_view_result_money" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
