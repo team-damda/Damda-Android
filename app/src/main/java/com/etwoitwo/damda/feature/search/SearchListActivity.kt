@@ -12,5 +12,15 @@ class SearchListActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivitySearchListBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        val currentFragment = supportFragmentManager.findFragmentById(binding.fragmentContainerViewSearch.id)
+
+        if(currentFragment == null) {
+            val fragment = SearchListFragment.newInstance("", "")
+            supportFragmentManager
+                .beginTransaction()
+                .add(binding.fragmentContainerViewSearch.id, fragment)
+                .commit()
+        }
     }
 }
