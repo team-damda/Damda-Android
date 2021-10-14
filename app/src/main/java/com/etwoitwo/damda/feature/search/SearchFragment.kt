@@ -1,11 +1,14 @@
 package com.etwoitwo.damda.feature.search
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import com.etwoitwo.damda.R
+import com.etwoitwo.damda.databinding.FragmentSearchBinding
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -18,6 +21,9 @@ private const val ARG_PARAM2 = "param2"
  * create an instance of this fragment.
  */
 class SearchFragment : Fragment() {
+    private var _binding: FragmentSearchBinding? = null
+    private val binding get() = _binding!!
+
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -33,9 +39,33 @@ class SearchFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_search, container, false)
+        _binding = FragmentSearchBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding.buttonSearch.setOnClickListener {
+            val intent = Intent(activity, SearchListActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.cardViewLowStock.setOnClickListener {
+            val intent = Intent(activity, SearchListActivity::class.java)
+            intent.putExtra("category1", "저렴한 주식")
+            startActivity(intent)
+        }
+        binding.cardViewCoffeeStock.setOnClickListener {
+            val intent = Intent(activity, SearchListActivity::class.java)
+            intent.putExtra("category2", "커피 한 잔")
+            startActivity(intent)
+        }
+    }
+
+    override fun onStart() {
+        super.onStart()
     }
 
     companion object {

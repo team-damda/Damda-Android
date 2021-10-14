@@ -5,6 +5,25 @@
     <string name="bottomnav_wallet">지갑</string>
     <string name="bottomnav_more">더보기</string>
 
+    <!-- On Boarding strign -->
+    <string name="onboarding1_1_1">메인페이지에서</string>
+    <string name="onboarding1_1_2">내 자산과 주식레벨을</string>
+    <string name="onboarding1_1_3">볼 수 있고</string>
+
+    <string name="onboarding1_2_1">검색페이지</string>
+    <string name="onboarding1_2_2">를 눌러</string>
+    <string name="onboarding1_2_3">원하는 주식을 찾으세요</string>
+
+    <string name="onboarding2_1_1">원하는 주식이</string>
+    <string name="onboarding2_1_2">현재 원하는 가격이라면</string>
+    <string name="onboarding2_1_3">매수</string>
+    <string name="onboarding2_1_3_2">를 눌러 원하는 만큼 사고</string>
+
+    <string name="onboarding2_2_1">샀던 가격보다 오르면</string>
+    <string name="onboarding2_2_2">매도</string>
+    <string name="onboarding2_2_2_2">를 눌러서 팔면</string>
+    <string name="onboarding2_2_3">차액을 벌 수 있어요</string>
+
     <!-- Graph, selling, buying string -->
     <string name="app_name">Damda</string>
     <string name="division">코스피</string>
@@ -71,6 +90,7 @@
     <string name="main_stockpercent">+50.00%</string>
     <string name="app_noneinterest">관심종목이 없어요</string>
     <string name="app_noneinterestadvice">검색탭을 통해 관심있는 주식을 담아봐요</string>
+    <string name="main_character">캐릭터</string>
 
 
     <!-- Calendar string -->
@@ -83,6 +103,7 @@
     <string name="wallet_transcontent">체결가 30,000원(1950주)</string>
     <string name="wallet_transtime">12:31</string>
     <string name="wallet_transday">21/5/6(수)</string>
+    <string name="wallet_transtype">매수</string>
     <string name="wallet_vallos">평가손익</string>
     <string name="wallet_vallossmoney">+5,000원</string>
     <string name="wallet_mystockasset">주식</string>
@@ -118,9 +139,9 @@
     <string name="search_search_icon">검색 아이콘</string>
     <string name="search_empty_result">해당종목이 없어요</string>
     <string name="search_another_word">다른 키워드를 검색해주세요</string>
-    <string name="search_high_stock">비싼 주식 <br /> TOP 100</string>
-    <string name="search_low_stock">저렴한 주식<br /> TOP 100</string>
-    <string name="search_favorite_stock">많은 사람들이<br />관심 있어하는 주식</string>
+    <string name="search_high_stock">비싼 주식\nTOP 100</string>
+    <string name="search_low_stock">저렴한 주식\nTOP 100</string>
+    <string name="search_favorite_stock">많은 사람들이\n관심 있어하는 주식</string>
     <string name="search_coffee_stock">커피 한 잔</string>
     <string name="search_chicken_stock">치킨 한 마리</string>
     <string name="search_giftcard_stock">상품권 한장</string>
