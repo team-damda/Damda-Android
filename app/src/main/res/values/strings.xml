@@ -27,8 +27,8 @@
     <!-- Graph, selling, buying string -->
     <string name="app_name">Damda</string>
     <string name="division">코스피</string>
-    <string name="stock_code">12345</string>
-    <string name="stock_name">카카오</string>
+    <string name="stock_code">0</string>
+    <string name="stock_name">GS</string>
     <string name="stock_money">12,345</string>
     <string name="increase_money">▲ 1,000</string>
     <string name="increase_rate">+3.3</string>
@@ -44,12 +44,12 @@
     <string name="buying">매수</string>
     <string name="selling">매도</string>
     <string name="recent">현재가</string>
-    <string name="recent_money">12,345</string>
-    <string name="two_stock">2</string>
+    <string name="recent_money">0</string>
+    <string name="two_stock">0</string>
     <string name="stock_unit">주</string>
     <string name="total">총</string>
-    <string name="total_money">1110,000</string>
-    <string name="buying_money">60,000</string>
+    <string name="total_money">0</string>
+    <string name="buying_money">0</string>
     <string name="lack">부족</string>
     <string name="max_buying">최대로 매수</string>
     <string name="all_delete">전체삭제</string>
@@ -139,9 +139,9 @@
     <string name="search_search_icon">검색 아이콘</string>
     <string name="search_empty_result">해당종목이 없어요</string>
     <string name="search_another_word">다른 키워드를 검색해주세요</string>
-    <string name="search_high_stock">비싼 주식 <br /> TOP 100</string>
-    <string name="search_low_stock">저렴한 주식<br /> TOP 100</string>
-    <string name="search_favorite_stock">많은 사람들이<br />관심 있어하는 주식</string>
+    <string name="search_high_stock">비싼 주식\nTOP 100</string>
+    <string name="search_low_stock">저렴한 주식\nTOP 100</string>
+    <string name="search_favorite_stock">많은 사람들이\n관심 있어하는 주식</string>
     <string name="search_coffee_stock">커피 한 잔</string>
     <string name="search_chicken_stock">치킨 한 마리</string>
     <string name="search_giftcard_stock">상품권 한장</string>

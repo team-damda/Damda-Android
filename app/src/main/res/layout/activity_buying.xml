@@ -1,27 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/constraint_layout_selling"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <include
-        android:id="@+id/toolbar"
-        layout="@layout/include_toolbar"
-        android:layout_width="0dp"
+    <ImageButton
+        android:id="@+id/button_back"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_gravity="end|center"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:background="@null"
+        android:contentDescription="@string/bottomnav_search"
+        android:minWidth="48dp"
+        android:minHeight="48dp"
+        android:padding="8dp"
+        android:src="@drawable/ic_back_24dp"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView12"
+        style="@style/Black_Bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="매수"
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@+id/button_back"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+
+    <ImageButton
+        android:id="@+id/button_hint"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end|center"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:background="@null"
+        android:contentDescription="@string/bottomnav_search"
+        android:minWidth="48dp"
+        android:minHeight="48dp"
+        android:padding="8dp"
+        android:src="@drawable/ic_hint_off_24_dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraint_layout_part"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@+id/frame_layout_max"
+        android:layout_marginTop="120dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar">
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:id="@+id/text_view_recent"
@@ -58,13 +96,16 @@
             app:layout_constraintStart_toEndOf="@+id/text_view_recent_money"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/text_view_two_stock"
+        <EditText
+            android:id="@+id/edit_text_input_stock"
             style="@style/Black_Bold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="@string/two_stock"
+            android:background="@null"
+            android:hint="0"
+            android:inputType="number"
+            android:maxLength="4"
             android:textSize="36sp"
             app:layout_constraintEnd_toStartOf="@+id/text_view_stock_unit"
             app:layout_constraintHorizontal_chainStyle="packed"
@@ -81,7 +122,7 @@
             android:text="@string/stock_unit"
             android:textSize="36sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/text_view_two_stock"
+            app:layout_constraintStart_toEndOf="@+id/edit_text_input_stock"
             app:layout_constraintTop_toBottomOf="@+id/text_view_recent_money" />
 
         <TextView
@@ -96,7 +137,7 @@
             app:layout_constraintEnd_toStartOf="@+id/text_view_total_money"
             app:layout_constraintHorizontal_chainStyle="packed"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/text_view_two_stock" />
+            app:layout_constraintTop_toBottomOf="@+id/edit_text_input_stock" />
 
         <TextView
             android:id="@+id/text_view_total_money"
@@ -108,7 +149,7 @@
             android:textSize="14sp"
             app:layout_constraintEnd_toStartOf="@+id/text_view_money_unit2"
             app:layout_constraintStart_toEndOf="@+id/text_view_total"
-            app:layout_constraintTop_toBottomOf="@+id/text_view_two_stock" />
+            app:layout_constraintTop_toBottomOf="@+id/edit_text_input_stock" />
 
 
         <TextView
@@ -121,7 +162,7 @@
             android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/text_view_total_money"
-            app:layout_constraintTop_toBottomOf="@+id/text_view_two_stock" />
+            app:layout_constraintTop_toBottomOf="@+id/edit_text_input_stock" />
 
         <TextView
             android:id="@+id/text_view_left_parentheses"
@@ -132,13 +173,13 @@
             android:text="@string/left_parentheses"
             android:textColor="@color/pastel_red"
             android:textSize="14sp"
-            app:layout_constraintEnd_toStartOf="@+id/text_view_buying_money"
+            app:layout_constraintEnd_toStartOf="@+id/text_view_rest_money"
             app:layout_constraintHorizontal_chainStyle="packed"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/text_view_total_money" />
 
         <TextView
-            android:id="@+id/text_view_buying_money"
+            android:id="@+id/text_view_rest_money"
             style="@style/Medium"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -161,7 +202,7 @@
             android:textColor="@color/pastel_red"
             android:textSize="14sp"
             app:layout_constraintEnd_toStartOf="@+id/text_view_lack"
-            app:layout_constraintStart_toEndOf="@+id/text_view_buying_money"
+            app:layout_constraintStart_toEndOf="@+id/text_view_rest_money"
             app:layout_constraintTop_toBottomOf="@+id/text_view_total_money" />
 
         <TextView
@@ -241,7 +282,6 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:background="@color/white"
-                android:padding="16dp"
                 android:stateListAnimator="@null"
                 android:text="@string/one"
                 android:textSize="20sp" />
@@ -254,7 +294,6 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:background="@color/white"
-                android:padding="16dp"
                 android:stateListAnimator="@null"
                 android:text="@string/two"
                 android:textSize="20sp" />
@@ -267,7 +306,6 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:background="@color/white"
-                android:padding="16dp"
                 android:stateListAnimator="@null"
                 android:text="@string/three"
                 android:textSize="20sp" />
@@ -283,7 +321,6 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:background="@color/white"
-                android:padding="16dp"
                 android:stateListAnimator="@null"
                 android:text="@string/four"
                 android:textSize="20sp" />
@@ -296,7 +333,6 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:background="@color/white"
-                android:padding="16dp"
                 android:stateListAnimator="@null"
                 android:text="@string/five"
                 android:textSize="20sp" />
@@ -309,7 +345,6 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:background="@color/white"
-                android:padding="16dp"
                 android:stateListAnimator="@null"
                 android:text="@string/six"
                 android:textSize="20sp" />
@@ -325,7 +360,6 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:background="@color/white"
-                android:padding="16dp"
                 android:stateListAnimator="@null"
                 android:text="@string/seven"
                 android:textSize="20sp" />
@@ -338,7 +372,6 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:background="@color/white"
-                android:padding="16dp"
                 android:stateListAnimator="@null"
                 android:text="@string/eight"
                 android:textSize="20sp" />
@@ -351,7 +384,6 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:background="@color/white"
-                android:padding="16dp"
                 android:stateListAnimator="@null"
                 android:text="@string/nine"
                 android:textSize="20sp" />
@@ -367,8 +399,6 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:background="@color/white"
-                android:paddingTop="16dp"
-                android:paddingBottom="20dp"
                 android:stateListAnimator="@null"
                 android:text="@string/all_delete"
                 android:textSize="14sp" />
@@ -381,13 +411,12 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:background="@color/white"
-                android:padding="16dp"
                 android:stateListAnimator="@null"
                 android:text="@string/zero"
                 android:textSize="20sp" />
 
             <ImageButton
-                android:id="@+id/button_back"
+                android:id="@+id/button_backspace"
                 style="@style/Brownish_grey_Medium"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -395,9 +424,9 @@
                 android:layout_weight="1"
                 android:background="@color/white"
                 android:paddingStart="32dp"
-                android:paddingTop="20dp"
+                android:paddingTop="10dp"
                 android:paddingEnd="32dp"
-                android:paddingBottom="18dp"
+                android:paddingBottom="10dp"
                 android:src="@drawable/ic_backspace_24_dp"
                 android:stateListAnimator="@null" />
         </TableRow>

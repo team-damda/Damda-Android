@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import android.widget.Toolbar
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.ViewPager2
@@ -92,6 +93,9 @@ class WalletFragment : Fragment() {
         pieChart = binding.piechartWallet
         initPieChart()
 
+        //* 툴바 제목 설정
+        val toolbar: Toolbar = binding.toolbar
+        toolbar.title = "지갑"
         return binding.root
     }
 
