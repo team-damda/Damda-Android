@@ -1,5 +1,6 @@
 package com.etwoitwo.damda.feature.main
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -16,6 +17,7 @@ import com.etwoitwo.damda.model.network.RetrofitService
 import com.etwoitwo.damda.databinding.FragmentMainStockBinding
 import com.etwoitwo.damda.feature.common.CommonHoldingFragment
 import com.etwoitwo.damda.feature.common.PagerFragmentStateAdapter
+import com.etwoitwo.damda.feature.onboarding.CalendarActivity
 import com.etwoitwo.damda.model.dataclass.CommonStatusData
 import com.etwoitwo.damda.model.network.SocketApplication
 import com.google.android.material.tabs.TabLayout
@@ -82,6 +84,10 @@ class MainStockFragment : Fragment() {
             tab.text = tabName
         }.attach()
 
+        binding.imgbtnMainGocalendar.setOnClickListener(View.OnClickListener {
+            val intent = Intent(context, CalendarActivity::class.java)
+            context?.startActivity(intent)
+        })
         return binding.root
     }
 

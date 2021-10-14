@@ -48,9 +48,20 @@ class GraphActivity : AppCompatActivity() {
             val sellingIntent = Intent(this, SellingActivity::class.java)
             startActivity(sellingIntent)
         }
-        binding.buttonBack.setOnClickListener{
+        binding.buttonBack.setOnClickListener {
             val Intent = Intent(this, SearchListActivity::class.java)
             startActivity(Intent)
+        }
+        var flag = 0
+        binding.buttonHeart.setOnClickListener{
+            if(flag == 1){
+                binding.buttonHeart.setImageResource(R.drawable.ic_favorite_off_24_dp)
+                flag = 0
+            }
+            else{
+                binding.buttonHeart.setImageResource(R.drawable.ic_favorite_on_24_dp)
+                flag = 1
+            }
         }
     }
 

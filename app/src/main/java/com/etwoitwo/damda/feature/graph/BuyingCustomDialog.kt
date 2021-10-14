@@ -22,7 +22,6 @@ class BuyingCustomDialog : DialogFragment() {
         setCancelable(false);
         dialog?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
 
-
         binding.buttonCancel.setOnClickListener {
             dismiss()    // 대화상자를 닫는 함수
         }

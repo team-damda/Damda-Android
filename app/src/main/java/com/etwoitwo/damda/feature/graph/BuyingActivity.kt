@@ -37,7 +37,7 @@ class BuyingActivity : AppCompatActivity() {
         var totalMoney = 0
         var inputStock = 0
 
-        var storedMoney = 400000 // 현재 내가 가진 잔액 적어주기 !! 서버 연결 !!
+        var storedMoney = 10000000 // 현재 내가 가진 잔액 적어주기 !! 서버 연결 !!
         var BinderResultMoney = binding.textViewTotalMoney
         BinderResultMoney.setText(storedMoney.toString())
 
