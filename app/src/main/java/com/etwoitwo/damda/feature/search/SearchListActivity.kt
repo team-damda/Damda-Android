@@ -16,10 +16,25 @@ class SearchListActivity : AppCompatActivity() {
         binding = ActivitySearchListBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        val category1 = intent.getStringExtra("category1")
+        val category2 = intent.getStringExtra("category2")
+
         val currentFragment = supportFragmentManager.findFragmentById(binding.fragmentContainerViewSearch.id)
 
+        val text = if(category1 == "저렴한 주식") {
+            binding.editTextTitle.setText(category1)
+            binding.editTextTitle.setSelection(category1.length)
+            "저렴한 주식"
+        } else if(category2 == "커피 한 잔") {
+            binding.editTextTitle.setText(category2)
+            binding.editTextTitle.setSelection(category2.length)
+            "커피 한 잔"
+        } else {
+            ""
+        }
+
         if(currentFragment == null) {
-            val fragment = SearchListFragment.newInstance("")
+            val fragment = SearchListFragment.newInstance(text)
             supportFragmentManager
                 .beginTransaction()
                 .add(binding.fragmentContainerViewSearch.id, fragment)

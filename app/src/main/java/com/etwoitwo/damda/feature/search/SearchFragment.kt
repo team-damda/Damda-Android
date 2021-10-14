@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import com.etwoitwo.damda.R
 import com.etwoitwo.damda.databinding.FragmentSearchBinding
 
@@ -48,6 +49,17 @@ class SearchFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.buttonSearch.setOnClickListener {
             val intent = Intent(activity, SearchListActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.cardViewLowStock.setOnClickListener {
+            val intent = Intent(activity, SearchListActivity::class.java)
+            intent.putExtra("category1", "저렴한 주식")
+            startActivity(intent)
+        }
+        binding.cardViewCoffeeStock.setOnClickListener {
+            val intent = Intent(activity, SearchListActivity::class.java)
+            intent.putExtra("category2", "커피 한 잔")
             startActivity(intent)
         }
     }

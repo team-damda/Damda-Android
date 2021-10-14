@@ -38,9 +38,7 @@
             android:hint="종목을 입력해주세요"
             android:inputType="text"
             android:singleLine="true"
-            android:textColorHint="#80000000" >
-            <requestFocus/>
-        </EditText>
+            android:textColorHint="#80000000" />
 
     </androidx.appcompat.widget.Toolbar>
 
