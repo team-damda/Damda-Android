@@ -38,8 +38,8 @@ class BuyingCustomDialog : DialogFragment() {
             dismiss()    // 대화상자를 닫는 함수
         }
         binding.buttonBuying.setOnClickListener {
-            loadData()
             val intent = Intent(context, MainActivity::class.java)
+            loadData()
             Toast.makeText(context, "매수를 완료했습니다.", Toast.LENGTH_SHORT).show()
             startActivity(intent)
         }
