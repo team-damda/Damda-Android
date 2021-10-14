@@ -30,6 +30,7 @@
         <activity android:name=".feature.graph.GraphActivity"/>
         <activity android:name=".feature.graph.BuyingActivity"/>
         <activity android:name=".feature.graph.SellingActivity"/>
+        <activity android:name=".feature.onboarding.CalendarActivity"/>
     </application>
 
 </manifest>
