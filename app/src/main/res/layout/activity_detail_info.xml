@@ -30,7 +30,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:background="@null"
-        android:contentDescription="@string/bottomnav_search"
+        android:contentDescription="북마크"
         android:minWidth="48dp"
         android:minHeight="48dp"
         android:padding="8dp"
