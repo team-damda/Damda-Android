@@ -27,6 +27,9 @@
         <activity android:name=".feature.sign.SignInActivity" />
         <activity android:name=".feature.sign.SignUpActivity" />
         <activity android:name=".MainActivity" />
+        <activity android:name=".feature.graph.GraphActivity"/>
+        <activity android:name=".feature.graph.BuyingActivity"/>
+        <activity android:name=".feature.graph.SellingActivity"/>
     </application>
 
 </manifest>

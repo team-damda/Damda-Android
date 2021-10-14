@@ -15,7 +15,10 @@
             style="@style/Warm_grey_Medium"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:layout_marginStart="80dp"
             android:layout_marginTop="16dp"
+            android:layout_marginEnd="80dp"
             android:text="@string/recheck"
             android:textSize="14sp"
             app:layout_constraintBottom_toTopOf="@+id/text_view_stock_name"
@@ -145,29 +148,34 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
+            android:layout_marginTop="20dp"
             android:layout_marginBottom="16dp"
             android:background="@drawable/bg_cancel_button"
             android:text="@string/cancel"
             android:textSize="20sp"
+            app:backgroundTint="@null"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/button_selling"
             app:layout_constraintStart_toStartOf="parent"
-            app:backgroundTint="@null"/>
+            app:layout_constraintTop_toBottomOf="@+id/text_view_result_money" />
 
         <Button
             android:id="@+id/button_selling"
             style="@style/White_Bold"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="16dp"
             android:background="@drawable/bg_selling_button"
             android:text="@string/selling"
             android:textSize="20sp"
+            app:backgroundTint="@null"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/button_cancel"
-            app:backgroundTint="@null"/>
+            app:layout_constraintTop_toBottomOf="@+id/text_view_result_money" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
