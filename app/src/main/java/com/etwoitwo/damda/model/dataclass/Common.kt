@@ -3,6 +3,13 @@ package com.etwoitwo.damda.model.dataclass
 import com.google.android.material.timepicker.TimeFormat
 import java.text.DateFormat
 
+data class SuccessData(
+    val status: Int,
+    val success: Boolean,
+    val message: String,
+)
+
+
 data class CommonStatusData(
     val status: Int,
     val success: Boolean,
