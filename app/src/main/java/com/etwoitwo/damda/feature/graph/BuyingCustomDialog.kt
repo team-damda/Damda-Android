@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.DialogFragment
+import com.etwoitwo.damda.MainActivity
 import com.etwoitwo.damda.databinding.DialogUtillBuyingBinding
 import com.etwoitwo.damda.feature.wallet.WalletFragment
 
@@ -26,7 +27,7 @@ class BuyingCustomDialog : DialogFragment() {
             dismiss()    // 대화상자를 닫는 함수
         }
         binding.buttonBuying.setOnClickListener {
-            val intent = Intent(context, WalletFragment::class.java)
+            val intent = Intent(context, MainActivity::class.java)
             Toast.makeText(context, "매수를 완료했습니다.", Toast.LENGTH_SHORT).show()
             startActivity(intent)
         }

@@ -73,7 +73,7 @@ class ChartFragment2 : Fragment() {
 
     inner class MyAxisFormatter : IndexAxisValueFormatter() {
 
-        fun getAxisLabel(value: Float, axis: AxisBase?): String {
+        override fun getAxisLabel(value: Float, axis: AxisBase?): String {
             val index = value.toInt()
             return if (index < stockList.size) {
                 stockList[index].date

@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.etwoitwo.damda.databinding.ItemSearchListBinding
+import com.etwoitwo.damda.feature.graph.GraphActivity
 import com.etwoitwo.damda.feature.sign.SignUpActivity
 import com.etwoitwo.damda.model.dataclass.Search
 import java.text.DecimalFormat
@@ -34,7 +35,7 @@ class SearchListAdapter(private val dataList: ArrayList<Search>) :
         override fun onClick(v: View?) {
             if (v != null) {
                 // TODO: 2021-10-14 종목 상세 페이지로 전환 
-                val intent = Intent(v.context, SignUpActivity::class.java)
+                val intent = Intent(v.context, GraphActivity::class.java)
                 v.context.startActivity(intent)
             }
         }
