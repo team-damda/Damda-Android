@@ -27,7 +27,7 @@
             app:srcCompat="@drawable/ic_back_24dp" />
 
         <EditText
-            android:id="@+id/editTextTextPersonName"
+            android:id="@+id/edit_text_title"
             style="@style/Black_Medium"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -37,9 +37,10 @@
             android:ems="10"
             android:hint="종목을 입력해주세요"
             android:inputType="text"
-            android:selectAllOnFocus="true"
             android:singleLine="true"
-            android:textColorHint="#80000000" />
+            android:textColorHint="#80000000" >
+            <requestFocus/>
+        </EditText>
 
     </androidx.appcompat.widget.Toolbar>
 
