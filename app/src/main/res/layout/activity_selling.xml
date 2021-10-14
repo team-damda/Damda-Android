@@ -6,32 +6,69 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <include
-        android:id="@+id/toolbar"
-        layout="@layout/include_toolbar"
-        android:layout_width="0dp"
+    <ImageButton
+        android:id="@+id/button_back"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_gravity="end|center"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:background="@null"
+        android:contentDescription="@string/bottomnav_search"
+        android:minWidth="48dp"
+        android:minHeight="48dp"
+        android:padding="8dp"
+        android:src="@drawable/ic_back_24dp"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView12"
+        style="@style/Black_Bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="매수"
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@+id/button_back"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+
+    <ImageButton
+        android:id="@+id/button_hint"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end|center"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:background="@null"
+        android:contentDescription="@string/bottomnav_search"
+        android:minWidth="48dp"
+        android:minHeight="48dp"
+        android:padding="8dp"
+        android:src="@drawable/ic_hint_off_24_dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraint_layout_part"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@+id/frame_layout_max"
+        android:layout_marginTop="120dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar">
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:focusable="true"
-            android:focusableInTouchMode="true"
             android:id="@+id/text_view_recent"
             style="@style/Warm_grey_Medium"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="4dp"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
             android:text="@string/recent"
             android:textSize="12sp"
             app:layout_constraintEnd_toStartOf="@+id/text_view_recent_money"
@@ -68,8 +105,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:background="@null"
-            android:inputType="number"
             android:hint="0"
+            android:inputType="number"
             android:maxLength="4"
             android:textSize="36sp"
             app:layout_constraintBottom_toBottomOf="@+id/text_view_stock_unit"
@@ -422,7 +459,7 @@
                 android:textSize="20sp" />
 
             <ImageButton
-                android:id="@+id/button_back"
+                android:id="@+id/button_backspace"
                 style="@style/Brownish_grey_Medium"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -433,7 +470,7 @@
                 android:paddingTop="10dp"
                 android:paddingEnd="32dp"
                 android:paddingBottom="10dp"
-                android:contentDescription="@string/EmptyImage"
+                android:contentDescription="뒤로가기"
                 android:src="@drawable/ic_backspace_24_dp"
                 android:stateListAnimator="@null" />
         </TableRow>

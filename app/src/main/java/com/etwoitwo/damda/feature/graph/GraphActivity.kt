@@ -10,6 +10,7 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import com.etwoitwo.damda.R
 import com.etwoitwo.damda.databinding.ActivityDetailInfoBinding
+import com.etwoitwo.damda.feature.search.SearchListActivity
 
 
 private lateinit var binding: ActivityDetailInfoBinding
@@ -28,13 +29,13 @@ class GraphActivity : AppCompatActivity() {
         }
 
         binding.buttonOneWeek.setOnClickListener{
-            setFragment()
+            setFragmentOneWeek()
         }
 
-        binding.textViewDivision.setText("코스피") // 서버 연결
-        binding.textViewStockCode.setText("005930") // 서버 연결
-        binding.textViewStockName.setText("삼성전자") // 서버 연결
-        binding.textViewStockMoney.setText("15000")
+        binding.textViewDivision.setText("코스닥") // 서버 연결
+        binding.textViewStockCode.setText("078930") // 서버 연결
+        binding.textViewStockName.setText("GS") // 서버 연결
+        binding.textViewStockMoney.setText("45,000")
 
         binding.textViewIncreaseMoney.setText("▲ 1,000") // 서버 연결
         binding.textViewIncreaseRate.setText("+3.3") // 서버 연결
@@ -47,17 +48,23 @@ class GraphActivity : AppCompatActivity() {
             val sellingIntent = Intent(this, SellingActivity::class.java)
             startActivity(sellingIntent)
         }
+        binding.buttonBack.setOnClickListener{
+            val Intent = Intent(this, SearchListActivity::class.java)
+            startActivity(Intent)
+        }
     }
 
     private fun setFragment(){
         val transaction = supportFragmentManager.beginTransaction()
-            .add(R.id.flame_layout_graph_shape, ChartFragment1())
+            .replace(R.id.flame_layout_graph_shape, ChartFragment1())
+            .addToBackStack(null)
         transaction.commit()
 
     }
     private fun setFragmentOneWeek(){
         val transaction = supportFragmentManager.beginTransaction()
-            .add(R.id.flame_layout_graph_shape, ChartFragment2())
+            .replace(R.id.flame_layout_graph_shape, ChartFragment2())
+            .addToBackStack(null)
         transaction.commit()
     }
 

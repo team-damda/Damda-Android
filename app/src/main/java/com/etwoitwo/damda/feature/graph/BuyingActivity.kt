@@ -8,6 +8,8 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
 import android.view.WindowManager
 import android.widget.Button
 import android.widget.EditText
@@ -17,6 +19,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.etwoitwo.damda.R
 import com.etwoitwo.damda.databinding.ActivityBuyingBinding
+import com.etwoitwo.damda.feature.search.SearchListActivity
 
 private lateinit var binding: ActivityBuyingBinding
 
@@ -28,9 +31,9 @@ class BuyingActivity : AppCompatActivity() {
 
         var BinderRecentMoney = binding.textViewRecentMoney
         var BinderInputStock = binding.editTextInputStock
-        BinderRecentMoney.setText("14000")
+        BinderRecentMoney.setText("45,000")
 
-        var recentMoney: Int = Integer.parseInt(BinderRecentMoney.text.toString())
+        var recentMoney: Int = 45000
         var totalMoney = 0
         var inputStock = 0
 
@@ -96,7 +99,10 @@ class BuyingActivity : AppCompatActivity() {
             dialog.show(supportFragmentManager, "BuyingCustomDialog")
 
         }
-
+        binding.buttonBack.setOnClickListener{
+            val Intent = Intent(this, GraphActivity::class.java)
+            startActivity(Intent)
+        }
     }
 
     fun changeColor(colorString: String) {
@@ -152,7 +158,7 @@ class BuyingActivity : AppCompatActivity() {
             binding.editTextInputStock.setText(null)
         }
 
-        binding.buttonBack.setOnClickListener {
+        binding.buttonBackspace.setOnClickListener {
             binding.editTextInputStock.setText(
                     binding.editTextInputStock.text.toString()
                         .substring(0, binding.editTextInputStock.text.toString().length - 1)

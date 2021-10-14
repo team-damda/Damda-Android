@@ -116,7 +116,7 @@ class ChartFragment1 : Fragment() {
     private fun getstockList(): ArrayList<Stock> {
         var date = 0
         var money = 24000
-        for (i: Int in 1..50){
+        for (i: Int in 1..40){
             stockList.add(Stock("21.10.14 11:"+date.toString(), money+rand(0, 10000)))
             date = date + 1
         }

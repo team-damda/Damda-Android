@@ -1,6 +1,7 @@
 package com.etwoitwo.damda.feature.graph
 
 import android.content.Context
+import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.text.Editable
@@ -89,6 +90,10 @@ class SellingActivity : AppCompatActivity() {
 
             }
         }
+        binding.buttonBack.setOnClickListener{
+            val Intent = Intent(this, GraphActivity::class.java)
+            startActivity(Intent)
+        }
     }
 
     fun changeColor(colorString: String){
@@ -144,13 +149,8 @@ class SellingActivity : AppCompatActivity() {
             binding.editTextInputStock.setText(null)
         }
         
-        binding.buttonBack.setOnClickListener{
-            if ( binding.editTextInputStock.toString() == null ){
-                binding.editTextInputStock.setText("0")
-            }
-            else{
+        binding.buttonBackspace.setOnClickListener{
                 binding.editTextInputStock.setText(binding.editTextInputStock.text.toString().substring(0, binding.editTextInputStock.text.toString().length-1))
-            }
         }
     }
 }
