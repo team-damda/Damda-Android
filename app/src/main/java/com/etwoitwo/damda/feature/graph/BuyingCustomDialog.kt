@@ -12,6 +12,8 @@ import android.widget.Toast
 import androidx.fragment.app.DialogFragment
 import com.etwoitwo.damda.MainActivity
 import com.etwoitwo.damda.databinding.DialogUtillBuyingBinding
+import com.etwoitwo.damda.feature.wallet.WalletFragment
+import com.etwoitwo.damda.model.dataclass.CommonStatusData
 import com.etwoitwo.damda.model.dataclass.SuccessData
 import com.etwoitwo.damda.model.network.RetrofitService
 import okhttp3.ResponseBody
@@ -33,13 +35,13 @@ class BuyingCustomDialog : DialogFragment() {
         setCancelable(false);
         dialog?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
 
-
         binding.buttonCancel.setOnClickListener {
             dismiss()    // 대화상자를 닫는 함수
         }
         binding.buttonBuying.setOnClickListener {
-            val intent = Intent(context, MainActivity::class.java)
+            Log.d("button on click", "loaddata 전")
             loadData()
+            val intent = Intent(context, MainActivity::class.java)
             Toast.makeText(context, "매수를 완료했습니다.", Toast.LENGTH_SHORT).show()
             startActivity(intent)
         }
@@ -55,7 +57,7 @@ class BuyingCustomDialog : DialogFragment() {
         /* [REST] 매수 버튼 눌렀을 때 POST 요청하기 */
         // TODO 로그인 이미 했을 시 해당 토큰으로 보내기
         val body = HashMap<String, String>()
-        body["UserId"] = "2"
+        body["UserId"] = "1"
         body["stockId"] = "078930"
         body["curCnt"] = "20"
         body["curPrice"] = "45000"

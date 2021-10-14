@@ -20,7 +20,6 @@ interface RetrofitInterface {
     @GET("wallet/transactions")
     fun requestWalletTransactions(@Query("UserId") UserId: Int): Call<StockData>
 
-    @FormUrlEncoded
     @POST("graph/buying")
     fun requestGraphBuying(@Body params:HashMap<String, String>): Call<SuccessData>
 }
