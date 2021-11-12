@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.etwoitwo.damda.R
 import com.etwoitwo.damda.databinding.FragmentGraph1Binding
 import com.github.mikephil.charting.charts.LineChart
 import com.github.mikephil.charting.components.*
@@ -31,13 +32,11 @@ class ChartFragment1 : Fragment() {
     ): View? {
         _binding = FragmentGraph1Binding.inflate(inflater, container, false)
         lineChart = binding.lineChart
-        initLineChart()
+        setLineChart()
         setDataToLineChart()
         return binding.root
     }
-    private fun initLineChart() {
-
-//        hide grid lines
+    private fun setLineChart() {
         lineChart.axisLeft.setDrawGridLines(false)
         lineChart.axisRight.setDrawGridLines(false)
         lineChart.isHighlightPerTapEnabled = true
@@ -49,6 +48,7 @@ class ChartFragment1 : Fragment() {
         lineChart.setScaleEnabled(false)
         lineChart.setPinchZoom(false)
         lineChart.setDrawMarkers(true)
+        lineChart.setTouchEnabled(true)
 
         val xAxis: XAxis = lineChart.xAxis
         xAxis.setDrawGridLines(false)
@@ -60,7 +60,6 @@ class ChartFragment1 : Fragment() {
         //add animation
         lineChart.animateX(1000)
 
-
         // to draw label on xAxis
         xAxis.position = XAxis.XAxisPosition.BOTTOM_INSIDE
         xAxis.valueFormatter = MyAxisFormatter()
@@ -68,6 +67,9 @@ class ChartFragment1 : Fragment() {
         xAxis.granularity = 1f
         xAxis.labelRotationAngle = +90f
 
+        // marker 설정
+        var marker = MyMarkerView(context, layoutResource = R.layout.item_marker_view)
+        lineChart.marker = marker
     }
 
 

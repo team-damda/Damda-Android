@@ -2,20 +2,30 @@ package com.etwoitwo.damda.feature.graph
 
 import android.content.Context
 import android.widget.TextView
-import com.etwoitwo.damda.R
 import com.github.mikephil.charting.components.MarkerView
+import com.etwoitwo.damda.databinding.ItemMarkerViewBinding
 import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.highlight.Highlight
 
-class MyMarkerView : MarkerView {
-    private lateinit var tvContent: TextView // marker
-    constructor(context: Context?, layoutResource: Int) : super(context, layoutResource) {
-//        tvContent = findViewById(R.id.test_marker_view)
-    } // draw override를 사용해 marker의 위치 조정 (bar의 상단 중앙)
 
-    // entry를 content의 텍스트에 지정
+class MyMarkerView : MarkerView {
+    private var _binding: ItemMarkerViewBinding? = null
+    private val binding get() = _binding!!
+
+    private lateinit var markerStockDate: TextView
+    private lateinit var markerStockTime: TextView
+    private lateinit var markerStockMoney: TextView
+
+    constructor(context: Context?, layoutResource: Int) : super(context, layoutResource) {
+        markerStockDate = binding.markerStockDate
+        markerStockTime = binding.markerStockTime
+        markerStockMoney = binding.markerStockMoney
+    }
+
     override fun refreshContent(e: Entry?, highlight: Highlight?) {
-        tvContent.text = e?.y.toString()
+        markerStockDate.text = e?.y.toString()
+        markerStockTime.text = e?.y.toString()
+        markerStockMoney.text = e?.y.toString()
         super.refreshContent(e, highlight)
     }
 }
