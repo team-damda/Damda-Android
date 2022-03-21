@@ -1,35 +1,35 @@
 package com.etwoitwo.damda.feature.graph
 
-import android.app.PendingIntent.getActivity
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
-import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentTransaction
 import com.etwoitwo.damda.R
 import com.etwoitwo.damda.databinding.ActivityDetailInfoBinding
 import com.etwoitwo.damda.feature.search.SearchListActivity
 
-
-private lateinit var binding: ActivityDetailInfoBinding
-
 class GraphActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityDetailInfoBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityDetailInfoBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         setFragment()
-        binding.buttonOneDay.setOnClickListener{
-
-            setFragment()
-            Log.d("tag", "setOnClickListener")
-        }
-
-        binding.buttonOneWeek.setOnClickListener{
-            setFragmentOneWeek()
+        binding.radioGroupDay.setOnCheckedChangeListener{ group, checkedId ->
+            when(checkedId) {
+                R.id.button_one_day -> {
+                    // 하루 그래프 계산
+                }
+                R.id.button_one_week -> {
+                    // 일주일 그래프 계산
+                }
+                R.id.button_one_month -> {
+                    // 한달 그래프 계산
+                }
+                R.id.button_one_year -> {
+                    // 일년 그래프 계산
+                }
+            }
         }
 
         binding.textViewDivision.setText("코스닥") // 서버 연결
@@ -67,16 +67,10 @@ class GraphActivity : AppCompatActivity() {
 
     private fun setFragment(){
         val transaction = supportFragmentManager.beginTransaction()
-            .replace(R.id.flame_layout_graph_shape, ChartFragment1())
+            .replace(R.id.flame_layout_graph_shape, ChartFragment())
             .addToBackStack(null)
         transaction.commit()
 
-    }
-    private fun setFragmentOneWeek(){
-        val transaction = supportFragmentManager.beginTransaction()
-            .replace(R.id.flame_layout_graph_shape, ChartFragment2())
-            .addToBackStack(null)
-        transaction.commit()
     }
 
 }

@@ -8,24 +8,25 @@ import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.highlight.Highlight
 
 
-class MyMarkerView : MarkerView {
-    private var _binding: ItemMarkerViewBinding? = null
-    private val binding get() = _binding!!
+class MyMarkerView(
+    context: Context,
+    layout: Int,
+    private val stockData: ArrayList<Stock>
+) : MarkerView(context, layout) {
 
-    private lateinit var markerStockDate: TextView
-    private lateinit var markerStockTime: TextView
-    private lateinit var markerStockMoney: TextView
+    private lateinit var binding: ItemMarkerViewBinding
 
-    constructor(context: Context?, layoutResource: Int) : super(context, layoutResource) {
-        markerStockDate = binding.markerStockDate
-        markerStockTime = binding.markerStockTime
-        markerStockMoney = binding.markerStockMoney
+    private var stockMoney: TextView? = null
+
+    init {
+        stockMoney = binding.markerStockMoney
     }
 
     override fun refreshContent(e: Entry?, highlight: Highlight?) {
-        markerStockDate.text = e?.y.toString()
-        markerStockTime.text = e?.y.toString()
-        markerStockMoney.text = e?.y.toString()
+        try {
+            stockMoney?.text = stockData.toString()
+        } catch (e: IndexOutOfBoundsException) { }
+
         super.refreshContent(e, highlight)
     }
 }

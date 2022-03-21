@@ -12,9 +12,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.etwoitwo.damda.databinding.ActivitySellingBinding
 
-private lateinit var binding: ActivitySellingBinding
-
 class SellingActivity : AppCompatActivity() {
+    private lateinit var binding: ActivitySellingBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySellingBinding.inflate(layoutInflater)
@@ -91,8 +91,13 @@ class SellingActivity : AppCompatActivity() {
             }
         }
         binding.buttonBack.setOnClickListener{
-            val Intent = Intent(this, GraphActivity::class.java)
-            startActivity(Intent)
+            val intent = Intent(this, GraphActivity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or
+                    Intent.FLAG_ACTIVITY_NEW_TASK or
+                    Intent.FLAG_ACTIVITY_CLEAR_TOP
+            )
+            startActivity(intent)
+            finish()
         }
     }
 

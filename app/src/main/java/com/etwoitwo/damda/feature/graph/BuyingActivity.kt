@@ -21,9 +21,14 @@ import com.etwoitwo.damda.R
 import com.etwoitwo.damda.databinding.ActivityBuyingBinding
 import com.etwoitwo.damda.feature.search.SearchListActivity
 
-private lateinit var binding: ActivityBuyingBinding
-
 class BuyingActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityBuyingBinding
+    var storedMoney = 10000000 // 현재 내가 가진 잔액 적어주기 !! 서버 연결 !!
+    var restMoney = 0
+    var lack = ""
+    var totalMoney = 0
+    var inputStock = 0
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityBuyingBinding.inflate(layoutInflater)
@@ -33,18 +38,13 @@ class BuyingActivity : AppCompatActivity() {
         var BinderInputStock = binding.editTextInputStock
         BinderRecentMoney.setText("45,000")
 
-        var recentMoney: Int = 45000
-        var totalMoney = 0
-        var inputStock = 0
+        var recentMoney = 45000
 
-        var storedMoney = 10000000 // 현재 내가 가진 잔액 적어주기 !! 서버 연결 !!
         var BinderResultMoney = binding.textViewTotalMoney
         BinderResultMoney.setText(storedMoney.toString())
 
-        var restMoney = 0
         binding.textViewLack.setText("남음")
         changeColor("#000000")
-        var lack = ""
 
         // 주의 개수를 입력하면 실시간으로 총 가격이 변함
         BinderInputStock.addTextChangedListener(object : TextWatcher {
@@ -55,27 +55,17 @@ class BuyingActivity : AppCompatActivity() {
             }
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                if (s.toString() == "") {
-                    inputStock = 0
-                    totalMoney = 0
-                    lack = "남음"
-                    restMoney = storedMoney
-                    binding.textViewTotalMoney.setText("0")
-                } else {
+                if (s.toString() == "")
+                    enterNothing()
+                else {
                     inputStock = Integer.parseInt(s.toString())
                     totalMoney = inputStock * recentMoney
                     binding.textViewTotalMoney.setText(totalMoney.toString())
 
-                    if (storedMoney > totalMoney) {
-                        restMoney = storedMoney - totalMoney
-                        lack = "남음"
-                        changeColor("#000000")
-
-                    } else {
-                        restMoney = storedMoney - totalMoney
-                        lack = "부족"
-                        changeColor("#e6504f")
-                    }
+                    if (storedMoney > totalMoney)
+                        remainBalance()
+                    else
+                        lackBalance()
                 }
                 binding.textViewRestMoney.setText(restMoney.toString())
                 binding.textViewLack.setText(lack)
@@ -100,8 +90,14 @@ class BuyingActivity : AppCompatActivity() {
 
         }
         binding.buttonBack.setOnClickListener{
-            val Intent = Intent(this, GraphActivity::class.java)
-            startActivity(Intent)
+            val intent = Intent(this, GraphActivity::class.java)
+            intent.addFlags(
+                android.content.Intent.FLAG_ACTIVITY_CLEAR_TASK or
+                    android.content.Intent.FLAG_ACTIVITY_NEW_TASK or
+                    android.content.Intent.FLAG_ACTIVITY_CLEAR_TOP
+            )
+            startActivity(intent)
+            finish()
         }
     }
 
@@ -111,6 +107,26 @@ class BuyingActivity : AppCompatActivity() {
         binding.textViewLeftParentheses.setTextColor(Color.parseColor(colorString))
         binding.textViewRightParentheses.setTextColor(Color.parseColor(colorString))
         binding.textViewRestMoney.setTextColor(Color.parseColor(colorString))
+    }
+
+    fun enterNothing() {
+        inputStock = 0
+        totalMoney = 0
+        lack = "남음"
+        restMoney = storedMoney
+        binding.textViewTotalMoney.setText("0")
+    }
+
+    fun remainBalance() {
+        restMoney = storedMoney - totalMoney
+        lack = "남음"
+        changeColor("#000000")
+    }
+
+    fun lackBalance() {
+        restMoney = storedMoney - totalMoney
+        lack = "부족"
+        changeColor("#e6504f")
     }
 
     fun addNumberKeyboard() {

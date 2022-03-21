@@ -197,131 +197,81 @@
     <FrameLayout
         android:id="@+id/flame_layout_graph_shape"
         android:layout_width="match_parent"
-        android:layout_height="320dp"
+        android:layout_height="360dp"
         android:layout_marginTop="16dp"
-        app:layout_constraintBottom_toTopOf="@+id/button_one_month"
+        app:layout_constraintBottom_toTopOf="@+id/radioGroup"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_view_stock_money">
 
     </FrameLayout>
 
-    <Button
-        android:id="@+id/button_one_day"
-        style="@style/Medium"
-        android:layout_width="0dp"
+    <RadioGroup
+        android:id="@+id/radioGroup_day"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
         android:layout_marginBottom="44dp"
-        android:background="@drawable/bg_check_button"
-        android:minWidth="0dp"
-        android:minHeight="48dp"
-        android:paddingStart="8dp"
-        android:paddingTop="4dp"
-        android:paddingEnd="8dp"
-        android:paddingBottom="4dp"
-        android:text="@string/day"
-        android:textColor="@color/black"
-        android:textSize="12sp"
-        app:backgroundTint="@null"
+        android:orientation="horizontal"
         app:layout_constraintBottom_toTopOf="@+id/button_buying"
-        app:layout_constraintEnd_toStartOf="@+id/button_one_week"
-        app:layout_constraintHorizontal_chainStyle="packed"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/button_one_week"
-        style="@style/Medium"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginBottom="44dp"
-        android:minWidth="0dp"
-        android:minHeight="48dp"
-        android:paddingStart="8dp"
-        android:paddingTop="4dp"
-        android:paddingEnd="8dp"
-        android:paddingBottom="4dp"
-        android:background="@drawable/bg_graph_button"
-        android:text="@string/one_week"
-        android:textColor="@color/black"
-        android:textSize="12sp"
-        app:backgroundTint="@null"
-        app:layout_constraintBottom_toTopOf="@+id/button_buying"
-        app:layout_constraintEnd_toStartOf="@+id/button_one_month"
-        app:layout_constraintStart_toEndOf="@+id/button_one_day" />
-
-    <Button
-        android:id="@+id/button_one_month"
-        style="@style/Medium"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginBottom="44dp"
-        android:minWidth="0dp"
-        android:minHeight="48dp"
-        android:paddingStart="8dp"
-        android:paddingTop="4dp"
-        android:paddingEnd="8dp"
-        android:paddingBottom="4dp"
-        android:background="@drawable/bg_graph_button"
-        android:text="@string/one_month"
-        android:textColor="@color/black"
-        android:textSize="12sp"
-        app:backgroundTint="@null"
-        app:layout_constraintBottom_toTopOf="@+id/button_buying"
-        app:layout_constraintEnd_toStartOf="@+id/button_three_month"
-        app:layout_constraintHorizontal_chainStyle="packed"
-        app:layout_constraintStart_toEndOf="@+id/button_one_week" />
-
-    <Button
-        android:id="@+id/button_three_month"
-        style="@style/Medium"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginBottom="44dp"
-        android:minWidth="0dp"
-        android:minHeight="48dp"
-        android:paddingStart="8dp"
-        android:paddingTop="4dp"
-        android:paddingEnd="8dp"
-        android:paddingBottom="4dp"
-        android:background="@drawable/bg_graph_button"
-        android:text="@string/three_month"
-        android:textColor="@color/black"
-        android:textSize="12sp"
-        app:backgroundTint="@null"
-        app:layout_constraintBottom_toTopOf="@+id/button_selling"
-        app:layout_constraintEnd_toStartOf="@+id/button_one_year"
-        app:layout_constraintStart_toEndOf="@+id/button_one_month" />
-
-    <Button
-        android:id="@+id/button_one_year"
-        style="@style/Medium"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="44dp"
-        android:minWidth="0dp"
-        android:minHeight="48dp"
-        android:paddingStart="8dp"
-        android:paddingTop="4dp"
-        android:paddingEnd="8dp"
-        android:paddingBottom="4dp"
-        android:background="@drawable/bg_graph_button"
-        android:text="@string/one_year"
-        android:textColor="@color/black"
-        android:textSize="12sp"
-        app:backgroundTint="@null"
-        app:layout_constraintBottom_toTopOf="@+id/button_selling"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/button_three_month" />
+        app:layout_constraintStart_toStartOf="parent">
+
+        <RadioButton
+            android:id="@+id/button_one_day"
+            style="@style/Medium.DayButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:background="@drawable/bg_check_button"
+            android:text="@string/day"
+            app:backgroundTint="@null" />
+
+        <RadioButton
+            android:id="@+id/button_one_week"
+            style="@style/Medium.DayButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:background="@drawable/bg_check_button"
+            android:text="@string/one_week"
+            app:backgroundTint="@null" />
+
+        <RadioButton
+            android:id="@+id/button_one_year"
+            style="@style/Medium.DayButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:background="@drawable/bg_check_button"
+            android:text="@string/one_month"
+            app:backgroundTint="@null" />
+
+        <RadioButton
+            android:id="@+id/button_three_month"
+            style="@style/Medium.DayButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:background="@drawable/bg_check_button"
+            android:text="@string/one_month"
+            app:backgroundTint="@null" />
+
+        <RadioButton
+            android:id="@+id/button_one_month"
+            style="@style/Medium.DayButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/bg_check_button"
+            android:text="@string/one_year"
+            app:backgroundTint="@null" />
+    </RadioGroup>
 
     <Button
         android:id="@+id/button_buying"
         style="@style/Bold"
+
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"

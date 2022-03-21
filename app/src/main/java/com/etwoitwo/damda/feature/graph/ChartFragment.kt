@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.etwoitwo.damda.R
-import com.etwoitwo.damda.databinding.FragmentGraph1Binding
+import com.etwoitwo.damda.databinding.FragmentGraphBinding
 import com.github.mikephil.charting.charts.LineChart
 import com.github.mikephil.charting.components.*
 import com.github.mikephil.charting.data.Entry
@@ -16,12 +16,12 @@ import com.github.mikephil.charting.data.LineDataSet
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter
 import java.util.Random
 
-class ChartFragment1 : Fragment() {
-    private var _binding: FragmentGraph1Binding? = null
+class ChartFragment : Fragment() {
+    private var _binding: FragmentGraphBinding? = null
     private val binding get() = _binding!!
 
     private lateinit var lineChart: LineChart
-    private var stockList = ArrayList<Stock>()
+    private var stockList = getstockList()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -30,7 +30,7 @@ class ChartFragment1 : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentGraph1Binding.inflate(inflater, container, false)
+        _binding = FragmentGraphBinding.inflate(inflater, container, false)
         lineChart = binding.lineChart
         setLineChart()
         setDataToLineChart()
@@ -68,7 +68,7 @@ class ChartFragment1 : Fragment() {
         xAxis.labelRotationAngle = +90f
 
         // marker 설정
-        var marker = MyMarkerView(context, layoutResource = R.layout.item_marker_view)
+        val marker = MyMarkerView(requireContext(), R.layout.item_marker_view, stockList)
         lineChart.marker = marker
     }
 
@@ -88,9 +88,6 @@ class ChartFragment1 : Fragment() {
     private fun setDataToLineChart() {
         //now draw bar chart with dynamic data
         val entries: ArrayList<Entry> = ArrayList()
-
-        stockList = getstockList()
-
         //you can replace this data object with  your custom object
         for (i in stockList.indices) {
             val Stock = stockList[i]
