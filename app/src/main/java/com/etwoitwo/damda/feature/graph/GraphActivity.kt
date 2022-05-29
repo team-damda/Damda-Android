@@ -2,6 +2,8 @@ package com.etwoitwo.damda.feature.graph
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
+import androidx.appcompat.app.AppCompatActivity
 import com.etwoitwo.damda.R
 import com.etwoitwo.damda.databinding.ActivityDetailInfoBinding
 import com.etwoitwo.damda.feature.search.SearchListActivity
@@ -18,7 +20,7 @@ class GraphActivity : AppCompatActivity() {
         binding.radioGroupDay.setOnCheckedChangeListener{ group, checkedId ->
             when(checkedId) {
                 R.id.button_one_day -> {
-                    // 하루 그래프 계산
+                    Log.d("radio", "1일")
                 }
                 R.id.button_one_week -> {
                     // 일주일 그래프 계산
@@ -26,8 +28,11 @@ class GraphActivity : AppCompatActivity() {
                 R.id.button_one_month -> {
                     // 한달 그래프 계산
                 }
+                R.id.button_three_month -> {
+                    Log.d("radio", "3개")
+                }
                 R.id.button_one_year -> {
-                    // 일년 그래프 계산
+                    Log.d("radio", "1년")
                 }
             }
         }

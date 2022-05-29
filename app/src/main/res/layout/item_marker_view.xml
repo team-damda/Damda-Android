@@ -2,45 +2,51 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@color/white">
 
     <TextView
         android:id="@+id/marker_stock_date"
+        style="@style/Medium"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:textSize="12sp"
-        android:textColor="@color/black"
-        style="@style/Medium"
+        android:layout_marginEnd="8dp"
         android:text="@string/marker_stock_date"
+        android:textColor="@color/black"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/marker_stock_time"
+        android:id="@+id/marker_stock_money"
+        style="@style/Medium"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:textSize="12sp"
-        android:textColor="@color/black"
-        style="@style/Medium"
-        android:text="@string/marker_stock_time"
-        app:layout_constraintStart_toEndOf="@+id/marker_stock_date"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_marginBottom="8dp"
+        android:text="@string/stock_money"
+        android:textColor="@color/dusty_orange"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/marker_stock_date" />
 
     <TextView
-        android:id="@+id/marker_stock_money"
+        android:id="@+id/marker_won"
+        style="@style/Medium"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
+        android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
-        android:textSize="18sp"
+        android:text="@string/money_unit"
         android:textColor="@color/dusty_orange"
-        style="@style/Medium"
-        android:text="@string/marker_stock_money"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintStart_toEndOf="@+id/marker_stock_money"
+        app:layout_constraintTop_toBottomOf="@+id/marker_stock_date" />
 </androidx.constraintlayout.widget.ConstraintLayout>

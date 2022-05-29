@@ -2,6 +2,7 @@ package com.etwoitwo.damda.feature.graph
 
 import android.graphics.Color
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,17 +15,19 @@ import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter
-import java.util.Random
+import java.text.SimpleDateFormat
+import java.time.format.DateTimeFormatter
+import java.util.*
+import java.util.concurrent.TimeUnit
+import kotlin.collections.ArrayList
+import kotlin.math.log
 
 class ChartFragment : Fragment() {
     private var _binding: FragmentGraphBinding? = null
     private val binding get() = _binding!!
 
     private lateinit var lineChart: LineChart
-    private var stockList = getstockList()
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
+    private var stockList = ArrayList<Stock>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -68,20 +71,18 @@ class ChartFragment : Fragment() {
         xAxis.labelRotationAngle = +90f
 
         // marker 설정
-        val marker = MyMarkerView(requireContext(), R.layout.item_marker_view, stockList)
+        val marker = MyMarkerView(context, layoutResource = R.layout.item_marker_view)
         lineChart.marker = marker
     }
 
 
     inner class MyAxisFormatter : IndexAxisValueFormatter() {
+        override fun getFormattedValue(value: Float): String {
+            var valueToMinutes = TimeUnit.MINUTES.toMillis(value.toLong())
+            var timeMinutes = Date(valueToMinutes)
+            var formatMinutes = SimpleDateFormat("HH:mm")
 
-        override fun getAxisLabel(value: Float, axis: AxisBase?): String {
-            val index = value.toInt()
-            return if (index < stockList.size) {
-                stockList[index].date
-            } else {
-                ""
-            }
+            return formatMinutes.format(timeMinutes)
         }
     }
 
@@ -89,9 +90,10 @@ class ChartFragment : Fragment() {
         //now draw bar chart with dynamic data
         val entries: ArrayList<Entry> = ArrayList()
         //you can replace this data object with  your custom object
+        stockList = getStockList()
         for (i in stockList.indices) {
-            val Stock = stockList[i]
-            entries.add(Entry(i.toFloat(), Stock.money.toFloat()))
+            val stock = stockList[i]
+            entries.add(Entry(stock.timestamp.toFloat(), stock.money.toFloat()))
         }
 
         val dataSet = LineDataSet(entries, "")
@@ -112,12 +114,13 @@ class ChartFragment : Fragment() {
     // we are initialising it directly
     val random = Random()
     val num = random.nextInt(100)
-    private fun getstockList(): ArrayList<Stock> {
-        var date = 0
+    private fun getStockList(): ArrayList<Stock> {
+        var time = 1648102448
         var money = 24000
-        for (i: Int in 1..40){
-            stockList.add(Stock("21.10.14 11:"+date.toString(), money+rand(0, 10000)))
-            date = date + 1
+        for (i: Int in 1..100){
+            stockList.add(Stock(time , money))
+            time += 60
+            money += 10
         }
 
         return stockList

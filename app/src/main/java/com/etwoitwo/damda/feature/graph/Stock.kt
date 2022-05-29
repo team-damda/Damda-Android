@@ -1,6 +1,6 @@
 package com.etwoitwo.damda.feature.graph
 
 data class Stock(
-    val date:String,
+    val timestamp: Int,
     val money: Int,
 )

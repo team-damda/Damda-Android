@@ -197,9 +197,9 @@
     <FrameLayout
         android:id="@+id/flame_layout_graph_shape"
         android:layout_width="match_parent"
-        android:layout_height="360dp"
+        android:layout_height="0dp"
         android:layout_marginTop="16dp"
-        app:layout_constraintBottom_toTopOf="@+id/radioGroup"
+        app:layout_constraintBottom_toTopOf="@+id/radioGroup_day"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_view_stock_money">
@@ -210,7 +210,7 @@
         android:id="@+id/radioGroup_day"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="44dp"
+        android:layout_marginBottom="16dp"
         android:orientation="horizontal"
         app:layout_constraintBottom_toTopOf="@+id/button_buying"
         app:layout_constraintEnd_toEndOf="parent"
@@ -237,7 +237,7 @@
             app:backgroundTint="@null" />
 
         <RadioButton
-            android:id="@+id/button_one_year"
+            android:id="@+id/button_one_month"
             style="@style/Medium.DayButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -257,7 +257,7 @@
             app:backgroundTint="@null" />
 
         <RadioButton
-            android:id="@+id/button_one_month"
+            android:id="@+id/button_one_year"
             style="@style/Medium.DayButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

@@ -12,22 +12,21 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Damda"
         android:usesCleartextTraffic="true">
+        <activity android:name=".feature.common.SplashActivity"/>
+        <activity android:name=".feature.onboarding.OnBoardingActivity" />
+        <activity android:name=".feature.search.SearchListActivity" />
+        <activity android:name=".feature.sign.SignInActivity" />
+        <activity android:name=".feature.sign.SignUpActivity" />
+        <activity android:name=".MainActivity" />
         <activity
-            android:name=".feature.common.SplashActivity"
-            android:exported="true"
-            android:theme="@style/SplashTheme">
+            android:name=".feature.graph.GraphActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".feature.onboarding.OnBoardingActivity" />
-        <activity android:name=".feature.search.SearchListActivity" />
-        <activity android:name=".feature.sign.SignInActivity" />
-        <activity android:name=".feature.sign.SignUpActivity" />
-        <activity android:name=".MainActivity" />
-        <activity android:name=".feature.graph.GraphActivity"/>
         <activity android:name=".feature.graph.BuyingActivity"/>
         <activity android:name=".feature.graph.SellingActivity"/>
         <activity android:name=".feature.onboarding.CalendarActivity"/>
