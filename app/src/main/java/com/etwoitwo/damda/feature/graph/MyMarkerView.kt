@@ -13,8 +13,8 @@ import java.util.*
 import java.util.concurrent.TimeUnit
 
 class MyMarkerView : MarkerView {
-    private lateinit var markerDate: TextView
-    private lateinit var markerMoney: TextView
+    private var markerDate: TextView
+    private var markerMoney: TextView
     constructor(context: Context?, layoutResource: Int) : super(context, layoutResource) {
         markerDate = findViewById(R.id.marker_stock_date)
         markerMoney = findViewById(R.id.marker_stock_money)
